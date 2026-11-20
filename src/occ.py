@@ -77,23 +77,53 @@ def parse_release(html: str, url: str) -> list[dict]:
     return [a for a in actions if a["date"]]
 
 
-def load_occ(fetch) -> tuple[list[dict], str]:
-    index_html, base = "", ""
-    for u in INDEX_URLS:
+YEAR_PAGE = "https://occ.treas.gov/news-events/newsroom/news-issuances-by-year/news-releases/{year}-news-releases.html"
+RELEASE_URL = "https://occ.treas.gov/news-issuances/news-releases/{year}/nr-occ-{year}-{n}.html"
+ANY_RELEASE = re.compile(r"nr-occ-(\d{4})-(\d+)\.html")
+TITLE = re.compile(r"Enforcement Actions for ([A-Z][a-z]+ \d{4})")
+# Known monthly enforcement releases, so the first run has a floor even if discovery fails.
+SEEDS = [(2025, 131), (2026, 3), (2026, 40), (2026, 48), (2026, 59), (2026, 93)]
+MAX_NEW_FETCHES = 160
+
+
+def candidate_releases(pages: list[str], today_year: int) -> list[tuple[int, int]]:
+    """Every release number from 1 up to the highest one seen this year, plus links and seeds."""
+    found = {(int(y), int(n)) for p in pages for y, n in ANY_RELEASE.findall(p)}
+    top = max([n for y, n in found | set(SEEDS) if y == today_year] or [0])
+    cands = found | set(SEEDS) | {(today_year, n) for n in range(1, top + 1)}
+    return sorted(cands, reverse=True)
+
+
+def load_occ(fetch, cache: dict, today_year: int, sleep=None) -> tuple[list[dict], str]:
+    """cache maps release URL -> {"enforcement": bool, "actions": [...]}; it is updated in place."""
+    pages = []
+    for u in INDEX_URLS + [YEAR_PAGE.format(year=today_year), YEAR_PAGE.format(year=today_year - 1)]:
         try:
-            index_html, base = fetch(u), u
-            break
-        except Exception as exc:
-            last = exc
-    if not index_html:
-        return [], f"unavailable this run ({last.__class__.__name__})"
-    links = release_links(index_html, base)
-    if not links:
-        return [], "index page read, but no monthly release links found (page layout may have changed)"
-    out, failed = [], 0
-    for link in links:
-        try:
-            out += parse_release(fetch(link), link)
+            pages.append(fetch(u))
         except Exception:
+            continue
+    fetched = failed = 0
+    for y, n in candidate_releases(pages, today_year):
+        url = RELEASE_URL.format(year=y, n=n)
+        if url in cache:
+            continue
+        if fetched >= MAX_NEW_FETCHES:
+            break
+        try:
+            html = fetch(url)
+            fetched += 1
+            if sleep:
+                sleep(0.4)
+        except Exception as exc:
             failed += 1
-    return out, f"ok, {len(links)} monthly releases read ({failed} failed), {len(out)} bank actions"
+            if "404" in str(exc):
+                cache[url] = {"enforcement": False, "actions": []}
+            continue
+        is_enf = bool(TITLE.search(html))
+        cache[url] = {"enforcement": is_enf, "actions": parse_release(html, url) if is_enf else []}
+    enf = [v for v in cache.values() if v["enforcement"]]
+    actions = [a for v in enf for a in v["actions"]]
+    if not pages and not fetched:
+        return actions, f"unavailable this run; using {len(enf)} cached monthly releases"
+    return actions, (f"ok, {len(enf)} monthly enforcement releases known ({fetched} new pages checked, "
+                     f"{failed} errors), {len(actions)} bank actions")

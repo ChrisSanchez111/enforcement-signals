@@ -23,6 +23,10 @@ So the tracker ranks targets by fit, not just by severity:
 5. **Map.** Each theme maps to the solution areas to lead with, plus a suggested opening question.
 6. **Publish.** Actions first seen in the last week are flagged as new. Results are committed to `docs/data.json` (the dashboard) and `targets/YYYY-MM.md` (the monthly list).
 
+## Existing customers
+
+`data/known_customers.json` lists companies publicly named as Sardine customers (from its customers page and job posting). Any target that matches is flagged as an existing customer, scored 0 and moved out of the best-fit list, so it's used as a reference rather than prospected.
+
 ## Adding an action
 
 Add an entry to `data/manual_actions.json`. Set `active_order` for older orders that are still in force, so they stay on the list. Every partner needs a `source` link.

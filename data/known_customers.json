@@ -1,0 +1,14 @@
+{
+  "note": "Companies publicly named as Sardine customers. Matching targets are flagged as existing customers (use as references, don't prospect). Name matches can collide with similarly named companies; check before acting.",
+  "sources": [
+    "https://www.sardine.ai/customers",
+    "https://jobs.a16z.com/jobs/sardine/d913dd28-070b-45c9-8ebf-20f0a2233ed6--enterprise-business-development-representative"
+  ],
+  "customers": [
+    "Live Oak Bank", "National Bank of Canada", "Southern Bancorp", "Bermuda Commercial Bank",
+    "Coastal Community Bank", "Custodia Bank", "First Bank of the Lake", "First Federal Bank of Kansas City",
+    "Haventree Bank", "Heritage Bank", "LHV Pank", "Portage Bank", "Vault Bank", "Stearns Bank", "Thread Bank",
+    "Prezzee", "Novo", "Raise", "bunq",
+    "FIS", "GoDaddy", "Intuit", "Edward Jones", "ZoomInfo", "Checkout.com"
+  ]
+}

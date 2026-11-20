@@ -258,10 +258,23 @@ def score(item: dict, today: date) -> int:
     return max(0, min(s, 100))
 
 
+CUSTOMERS_FILE = ROOT / "data" / "known_customers.json"
+_customers: set[str] | None = None
+
+
+def is_customer(name: str) -> bool:
+    global _customers
+    if _customers is None:
+        data = json.loads(CUSTOMERS_FILE.read_text()) if CUSTOMERS_FILE.exists() else {"customers": []}
+        _customers = {norm_name(c) for c in data["customers"]}
+    return norm_name(name) in _customers
+
+
 def enrich(item: dict, today: date) -> dict:
     item["themes"] = classify(item)
     item["segment"] = segment_of(item)
-    item["icp"] = item["segment"] in ICP_SEGMENTS
+    item["customer"] = is_customer(item["institution"])
+    item["icp"] = item["segment"] in ICP_SEGMENTS and not item["customer"]
     lead = next((t for t in item["themes"] if t in PLAYBOOK), None)
     if item.get("via"):
         item["solutions"] = PARTNER_SOLUTIONS
@@ -272,9 +285,11 @@ def enrich(item: dict, today: date) -> dict:
     if not item.get("opener"):
         item["opener"] = OPENERS.get(lead, "") if lead else ""
     age = (today - date.fromisoformat(item["date"])).days
-    if not item.get("tier"):
+    if item["customer"]:
+        item["tier"] = "Existing Sardine customer: use as a reference, don't prospect"
+    elif not item.get("tier"):
         item["tier"] = "Just hit" if age <= FRESH_DAYS else "Remediating"
-    item["score"] = score(item, today)
+    item["score"] = 0 if item["customer"] else score(item, today)
     return item
 
 
@@ -383,7 +398,12 @@ def write_markdown(items: list[dict], month: str, statuses: dict) -> Path:
 def main() -> int:
     today = date.today()
     fed, fed_status = load_fed()
-    occ_items, occ_status = occ.load_occ(fetch)
+    occ_cache_path = ROOT / "data" / "occ_cache.json"
+    occ_cache = json.loads(occ_cache_path.read_text()) if occ_cache_path.exists() else {}
+    import time
+    occ_items, occ_status = occ.load_occ(fetch, occ_cache, today.year, sleep=time.sleep)
+    occ_cache_path.write_text(json.dumps(occ_cache, indent=2, sort_keys=True) + "\n")
+    occ_items = [dict(a) for a in occ_items]
     manual = load_manual()
     statuses = {"Federal Reserve CSV": f"{fed_status}, {len(fed)} open institution actions",
                 "OCC monthly releases": occ_status,

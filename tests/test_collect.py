@@ -112,6 +112,36 @@ class CollectTests(unittest.TestCase):
         self.assertEqual(occ.release_links(idx, "https://www.occ.gov/topics/a.html"),
                          ["https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html"])
 
+    def test_load_occ_walks_numbers_and_caches(self):
+        import occ
+        enf = """<p>News Release 2026-5 | February 19, 2026</p><h1>OCC Announces Enforcement Actions for February 2026</h1>
+        <p>Actions taken against banks are:</p><ul><li>Formal Agreement with Sample Bank, Austin, Texas, for BSA/AML
+        deficiencies. (Docket No. AA-ENF-2026-9)</li></ul><p>The termination actions are:</p>"""
+        calls = []
+
+        def fake(u):
+            calls.append(u)
+            if "index" in u or "news-releases.html" in u:
+                return '<a href="/news-issuances/news-releases/2026/nr-occ-2026-6.html">x</a>'
+            if u.endswith("nr-occ-2026-5.html"):
+                return enf
+            if u.endswith("nr-occ-2026-4.html"):
+                raise Exception("HTTP Error 404")
+            return "<h1>Some other news</h1>"
+        cache = {}
+        acts, status = occ.load_occ(fake, cache, 2026)
+        self.assertIn("Sample Bank (Austin, Texas)", [a["institution"] for a in acts])
+        n = len(calls)
+        occ.load_occ(fake, cache, 2026)
+        self.assertEqual(len(calls) - n, 4)  # second run re-reads only the index and year pages
+
+    def test_existing_customer_flagged(self):
+        it = collect.enrich({"institution": "Thread Bank (Rogersville, TN)", "regulator": "FDIC", "action": "Consent order",
+                             "date": "2026-11-01", "segment": "Sponsor bank", "themes": ["BSA/AML"]}, date(2026, 11, 20))
+        self.assertTrue(it["customer"])
+        self.assertFalse(it["icp"])
+        self.assertEqual(it["score"], 0)
+
     def test_dedupe_prefers_curated(self):
         cur = {"institution": "United Texas Bank, N.A. (Dallas, TX)", "regulator": "OCC", "date": "2026-06-12"}
         auto = {"institution": "United Texas Bank (Dallas, Texas)", "regulator": "OCC", "date": "2026-07-16"}

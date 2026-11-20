@@ -57,7 +57,7 @@ const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&g
 const col=s=>s>=80?"#c0392b":s>=60?"#e4572e":s>=40?"#c98a12":"#6b7390";
 let data=[],cur="Best fit";
 const VIEWS={"Best fit":a=>a.icp,"Fintech & crypto":a=>["Fintech / payments","Crypto","Marketplace / ecommerce"].includes(a.segment),
- "Sponsor banks":a=>a.segment==="Sponsor bank","Other banks":a=>!a.icp,"All":a=>true};
+ "Sponsor banks":a=>a.segment==="Sponsor bank","Other banks":a=>!a.icp&&!a.customer,"Sardine customers":a=>a.customer,"All":a=>true};
 const bar=document.getElementById("bar"),list=document.getElementById("list");
 function render(){
  const rows=data.filter(VIEWS[cur]);
