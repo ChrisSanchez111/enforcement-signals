@@ -3,7 +3,7 @@
   "month": "2026-11",
   "sources": {
     "Federal Reserve CSV": "ok (https://www.federalreserve.gov/supervisionreg/files/enforcementactions.csv), 334 open institution actions",
-    "OCC monthly releases": "ok, 1 monthly releases read (0 failed), 0 bank actions",
+    "OCC monthly releases": "ok, 18 monthly enforcement releases known (160 new pages checked, 17 errors), 0 bank actions",
     "Curated (OCC, FDIC, FinCEN, other)": "9 actions",
     "Fed order tagging": "read 0 new orders, 2 unreadable, 3 cached",
     "Partners of banks under order": "12 fintech/crypto targets"
@@ -36,6 +36,7 @@
         }
       ],
       "source": "Curated",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Sponsor Banking",
@@ -67,6 +68,7 @@
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -96,6 +98,7 @@
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -126,6 +129,7 @@
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -156,6 +160,7 @@
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -186,6 +191,7 @@
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -216,6 +222,7 @@
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -245,6 +252,7 @@
       "active_order": false,
       "verify": false,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -274,6 +282,7 @@
       "active_order": false,
       "verify": false,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -313,6 +322,7 @@
         }
       ],
       "source": "Curated",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Sponsor Banking",
@@ -340,6 +350,7 @@
       ],
       "url": "https://paymentrailsreview.com/read/banking-as-a-service-consent-orders/",
       "source": "Curated",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Sponsor Banking",
@@ -406,6 +417,7 @@
         }
       ],
       "source": "Curated",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Sponsor Banking",
@@ -446,6 +458,7 @@
         }
       ],
       "source": "Curated",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Sponsor Banking",
@@ -477,6 +490,7 @@
       "active_order": false,
       "verify": true,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -506,6 +520,7 @@
       "active_order": false,
       "verify": true,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -536,6 +551,7 @@
       "active_order": true,
       "verify": true,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -566,6 +582,7 @@
       "active_order": true,
       "verify": true,
       "source": "Partner of curated action",
+      "customer": false,
       "icp": true,
       "solutions": [
         "Transaction Monitoring",
@@ -593,6 +610,7 @@
       "penalty_usd": 350000000,
       "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html",
       "source": "Curated",
+      "customer": false,
       "icp": false,
       "solutions": [
         "Transaction Monitoring",
@@ -625,6 +643,7 @@
       "penalty_usd": 1200000000,
       "url": "https://www.fincen.gov/system/files/2026-10/BoA-Consent-Order-Execution-Final.pdf",
       "source": "Curated",
+      "customer": false,
       "icp": false,
       "solutions": [
         "Transaction Monitoring",
@@ -651,6 +670,7 @@
       "penalty_usd": 750000000,
       "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html",
       "source": "Curated",
+      "customer": false,
       "icp": false,
       "solutions": [
         "Transaction Monitoring",
@@ -677,6 +697,7 @@
         "Sanctions"
       ],
       "segment": "Megabank",
+      "customer": false,
       "icp": false,
       "solutions": [
         "Transaction Monitoring",
@@ -704,6 +725,7 @@
       ],
       "url": "https://www.pymnts.com/?p=4027596",
       "source": "Curated",
+      "customer": false,
       "icp": false,
       "solutions": [
         "Sponsor Banking",
@@ -728,6 +750,7 @@
         "BSA/AML"
       ],
       "segment": "Community bank",
+      "customer": false,
       "icp": false,
       "solutions": [
         "Transaction Monitoring",
@@ -753,6 +776,7 @@
         "Unclassified"
       ],
       "segment": "Community bank",
+      "customer": false,
       "icp": false,
       "solutions": [],
       "opener": "",
@@ -773,6 +797,7 @@
         "Safety & soundness"
       ],
       "segment": "Community bank",
+      "customer": false,
       "icp": false,
       "solutions": [],
       "opener": "",
@@ -793,6 +818,7 @@
         "Unclassified"
       ],
       "segment": "Community bank",
+      "customer": false,
       "icp": false,
       "solutions": [],
       "opener": "",
