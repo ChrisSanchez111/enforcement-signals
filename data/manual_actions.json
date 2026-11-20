@@ -1,5 +1,35 @@
 [
   {
+    "institution": "American Express National Bank (Sandy, UT)",
+    "regulator": "OCC",
+    "action": "Cease and desist order and civil money penalty ($350M)",
+    "date": "2026-10-08",
+    "summary": "BSA program deficiencies: weak risk assessment of the card business, ineffective customer due diligence and risk rating, inconsistent customer identification, untimely or missed SARs, weak independent testing and staffing. OCC tied the gaps to roughly $13B in suspected trade-based money laundering (2014–2025). A parallel Federal Reserve consent order adds transaction monitoring, fraud-referral, third-party risk and OFAC remediation.",
+    "themes": ["BSA/AML", "Sanctions", "Third-party / fintech", "Fraud / consumer"],
+    "penalty_usd": 350000000,
+    "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html"
+  },
+  {
+    "institution": "Bank of America, N.A. (Charlotte, NC)",
+    "regulator": "OCC",
+    "action": "Civil money penalty ($750M)",
+    "date": "2026-10-22",
+    "summary": "BSA compliance program deficiencies, failure to timely file suspicious activity reports, and wires sent with inaccurate originator information. Date shown is the OCC release date.",
+    "themes": ["BSA/AML"],
+    "penalty_usd": 750000000,
+    "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html"
+  },
+  {
+    "institution": "Bank of America, N.A.",
+    "regulator": "FinCEN",
+    "action": "Consent order imposing civil money penalty ($1.2B)",
+    "date": "2026-10-27",
+    "summary": "Bank Secrecy Act violations; $1.2B civil money penalty with undertakings. Date shown is when the order was reported.",
+    "themes": ["BSA/AML"],
+    "penalty_usd": 1200000000,
+    "url": "https://www.fincen.gov/system/files/2026-10/BoA-Consent-Order-Execution-Final.pdf"
+  },
+  {
     "institution": "Community Federal Savings Bank (Woodhaven, NY)",
     "regulator": "OCC",
     "action": "Consent order",
@@ -7,15 +37,5 @@
     "summary": "BSA/AML program deficiencies tied to a payment processing line that grew faster than its controls; weak customer due diligence, suspicious activity monitoring, staffing and independent testing. Sponsor bank for Wise and Crypto.com. Requires an end-to-end BSA/AML program review and a third-party risk assessment.",
     "themes": ["BSA/AML", "Third-party / fintech"],
     "url": "https://www.bankingdive.com/news/occ-community-federal-savings-bank-new-york-aml-bsa-sar-deficiencies-fintech-partner/821272/"
-  },
-  {
-    "institution": "Bank of America, N.A.",
-    "regulator": "FinCEN",
-    "action": "Consent order imposing civil money penalty",
-    "date": "2026-10-27",
-    "summary": "Bank Secrecy Act violations; $1.2 billion civil money penalty with undertakings.",
-    "themes": ["BSA/AML"],
-    "penalty_usd": 1200000000,
-    "url": "https://www.fincen.gov/system/files/2026-10/BoA-Consent-Order-Execution-Final.pdf"
   }
 ]

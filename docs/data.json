@@ -3,15 +3,46 @@
   "month": "2026-11",
   "sources": {
     "Federal Reserve CSV": "unavailable this run (URLError), 0 open institution actions",
-    "Curated (OCC, FDIC, FinCEN, other)": "2 actions"
+    "Curated (OCC, FDIC, FinCEN, other)": "4 actions"
   },
   "actions": [
     {
+      "institution": "American Express National Bank (Sandy, UT)",
+      "regulator": "OCC",
+      "action": "Cease and desist order and civil money penalty ($350M)",
+      "date": "2026-10-08",
+      "summary": "BSA program deficiencies: weak risk assessment of the card business, ineffective customer due diligence and risk rating, inconsistent customer identification, untimely or missed SARs, weak independent testing and staffing. OCC tied the gaps to roughly $13B in suspected trade-based money laundering (2014\u20132025). A parallel Federal Reserve consent order adds transaction monitoring, fraud-referral, third-party risk and OFAC remediation.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech",
+        "Fraud / consumer"
+      ],
+      "penalty_usd": 350000000,
+      "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html",
+      "source": "Curated",
+      "solutions": [
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Customer Risk Rating",
+        "Case Management",
+        "Sanctions Screening",
+        "Sponsor Banking",
+        "Global KYB",
+        "Payment Fraud",
+        "Account Takeovers",
+        "Device & Behavior"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Just hit",
+      "score": 95
+    },
+    {
       "institution": "Bank of America, N.A.",
       "regulator": "FinCEN",
-      "action": "Consent order imposing civil money penalty",
+      "action": "Consent order imposing civil money penalty ($1.2B)",
       "date": "2026-10-27",
-      "summary": "Bank Secrecy Act violations; $1.2 billion civil money penalty with undertakings.",
+      "summary": "Bank Secrecy Act violations; $1.2B civil money penalty with undertakings. Date shown is when the order was reported.",
       "themes": [
         "BSA/AML"
       ],
@@ -27,6 +58,28 @@
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Just hit",
       "score": 95
+    },
+    {
+      "institution": "Bank of America, N.A. (Charlotte, NC)",
+      "regulator": "OCC",
+      "action": "Civil money penalty ($750M)",
+      "date": "2026-10-22",
+      "summary": "BSA compliance program deficiencies, failure to timely file suspicious activity reports, and wires sent with inaccurate originator information. Date shown is the OCC release date.",
+      "themes": [
+        "BSA/AML"
+      ],
+      "penalty_usd": 750000000,
+      "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html",
+      "source": "Curated",
+      "solutions": [
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Customer Risk Rating",
+        "Case Management"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Just hit",
+      "score": 90
     },
     {
       "institution": "Community Federal Savings Bank (Woodhaven, NY)",
