@@ -9,7 +9,7 @@ Output
 - docs/data.json            all actions, classified and scored (feeds the dashboard)
 - targets/YYYY-MM.md        that month's target list
 
-Standard library only, so the GitHub Action needs no installs.
+Standard library only, plus pypdf (optional) for reading the Fed's attached orders.
 """
 from __future__ import annotations
 
@@ -131,12 +131,87 @@ def load_manual() -> list[dict]:
     return items
 
 
+def classify_text(text: str, min_hits: int = 1) -> list[str]:
+    """Themes whose keywords appear at least min_hits times in text."""
+    text = text.lower()
+    found = []
+    for theme, words in THEMES.items():
+        hits = sum(len(re.findall(rf"\b{re.escape(w)}\b", text)) for w in words)
+        if hits >= min_hits:
+            found.append(theme)
+    return found
+
+
 def classify(item: dict) -> list[str]:
     if item.get("themes"):
         return item["themes"]
-    text = " ".join([item.get("action", ""), item.get("summary", "")]).lower()
-    found = [t for t, words in THEMES.items() if any(re.search(rf"\b{re.escape(w)}\b", text) for w in words)]
+    found = classify_text(" ".join([item.get("action", ""), item.get("summary", "")]))
     return found or ["Unclassified"]
+
+
+# ---- Reading the Fed's press release and attached order --------------------
+
+CACHE = ROOT / "data" / "fed_cache.json"
+MIN_HITS_ORDER = 2   # full orders are long; one stray mention shouldn't tag a theme
+MAX_PDF_PAGES = 12
+
+
+def html_to_text(html: str) -> str:
+    html = re.sub(r"(?is)<(script|style).*?</\1>", " ", html)
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html)).strip()
+
+
+def pdf_links(html: str, base: str) -> list[str]:
+    from urllib.parse import urljoin
+    links = re.findall(r'href="([^"]+\.pdf)"', html, flags=re.I)
+    return list(dict.fromkeys(urljoin(base, l) for l in links))
+
+
+def pdf_text(url: str) -> str:
+    try:
+        from pypdf import PdfReader
+    except ImportError:
+        return ""
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        reader = PdfReader(io.BytesIO(resp.read()))
+    return " ".join((p.extract_text() or "") for p in reader.pages[:MAX_PDF_PAGES])
+
+
+def read_fed_document(url: str, get=fetch, get_pdf=pdf_text) -> dict:
+    """Return {'themes': [...], 'summary': str} for one Fed enforcement link."""
+    html = get(url)
+    text = html_to_text(html)
+    for link in pdf_links(html, url)[:2]:
+        try:
+            text += " " + get_pdf(link)
+        except Exception:
+            continue
+    themes = [t for t in classify_text(text, MIN_HITS_ORDER) if t != "Safety & soundness"]
+    if not themes and classify_text(text, MIN_HITS_ORDER):
+        themes = ["Safety & soundness"]
+    return {"themes": themes or ["Unclassified"], "summary": "Tagged automatically from the Federal Reserve order text."}
+
+
+def tag_fed(items: list[dict]) -> str:
+    """Read each Fed action's documents once; remember results in data/fed_cache.json."""
+    cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
+    read = failed = 0
+    for it in items:
+        url = it.get("url")
+        if not url:
+            continue
+        if url not in cache:
+            try:
+                cache[url] = read_fed_document(url)
+                read += 1
+            except Exception:
+                failed += 1
+                continue
+        it["themes"] = cache[url]["themes"]
+        it["summary"] = it.get("summary") or cache[url]["summary"]
+    CACHE.write_text(json.dumps(cache, indent=2, sort_keys=True) + "\n")
+    return f"read {read} new orders, {failed} unreadable, {len(cache)} cached"
 
 
 def score(item: dict, today: date) -> int:
@@ -204,6 +279,8 @@ def main() -> int:
     statuses = {"Federal Reserve CSV": f"{fed_status}, {len(fed)} open institution actions",
                 "Curated (OCC, FDIC, FinCEN, other)": f"{len(manual)} actions"}
     cutoff = today - timedelta(days=LOOKBACK_DAYS)
+    fed = [i for i in fed if date.fromisoformat(i["date"]) >= cutoff]
+    statuses["Fed order tagging"] = tag_fed(fed)
     items = [i for i in dedupe(manual + fed) if date.fromisoformat(i["date"]) >= cutoff]
     items = sorted((enrich(i, today) for i in items), key=lambda i: (-i["score"], i["date"]))
     month = today.strftime("%Y-%m")

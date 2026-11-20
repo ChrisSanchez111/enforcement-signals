@@ -33,6 +33,20 @@ class CollectTests(unittest.TestCase):
         self.assertEqual(item["tier"], "Just hit")
         self.assertGreaterEqual(item["score"], 80)
 
+    def test_read_fed_document_uses_order_text(self):
+        html = '<p>The Board announced a written agreement.</p><a href="/files/order.pdf">Order</a>'
+        order = "The Bank shall improve its BSA/AML compliance program and suspicious activity reporting. BSA officer staffing."
+        seen = []
+        out = collect.read_fed_document("https://example.gov/pr.htm", get=lambda u: html,
+                                        get_pdf=lambda u: seen.append(u) or order)
+        self.assertEqual(seen, ["https://example.gov/files/order.pdf"])
+        self.assertEqual(out["themes"], ["BSA/AML"])
+
+    def test_capital_only_order_is_safety_and_soundness(self):
+        out = collect.read_fed_document("https://x.gov/a", get=lambda u: "capital plan and capital ratios and liquidity",
+                                        get_pdf=lambda u: "")
+        self.assertEqual(out["themes"], ["Safety & soundness"])
+
 
 if __name__ == "__main__":
     unittest.main()
