@@ -3,7 +3,7 @@
   "month": "2026-11",
   "sources": {
     "Federal Reserve CSV": "ok (https://www.federalreserve.gov/supervisionreg/files/enforcementactions.csv), 334 open institution actions",
-    "OCC monthly releases": "ok, 18 monthly enforcement releases known (160 new pages checked, 17 errors), 0 bank actions",
+    "OCC monthly releases": "ok, 22 monthly enforcement releases known (54 new pages checked, 0 errors), 0 bank actions",
     "Curated (OCC, FDIC, FinCEN, other)": "9 actions",
     "Fed order tagging": "read 0 new orders, 2 unreadable, 3 cached",
     "Partners of banks under order": "12 fintech/crypto targets"
