@@ -40,7 +40,7 @@ THEMES = {
     "BSA/AML": ["bsa", "aml", "anti-money", "money laundering", "bank secrecy", "suspicious activity", "sar"],
     "Sanctions": ["ofac", "sanction"],
     "Third-party / fintech": ["third-party", "third party", "fintech", "sponsor", "baas", "banking-as-a-service", "payment processing"],
-    "Fraud / consumer": ["fraud", "udap", "udaap", "consumer", "unfair", "deceptive"],
+    "Fraud / consumer": ["fraud", "fraudulent", "udap", "udaap", "consumer protection", "unfair or deceptive"],
     "Safety & soundness": ["safety and soundness", "capital", "liquidity", "credit risk", "management"],
 }
 
