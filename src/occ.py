@@ -27,7 +27,8 @@ SECTION_END = re.compile(r"institution-affiliated part|against IAPs|termination 
 BULLET = re.compile(r"^(?P<action>[A-Z][^.]*?)\s+(?:against|with)\s+(?P<bank>[^,]+?),\s*(?P<city>[^,]+?),\s*"
                     r"(?P<state>[A-Z][A-Za-z .]+?),\s*(?:for|related to|regarding|to)\s+(?P<why>.*)$", re.S)
 DOCKET = re.compile(r"\(Docket No\.?\s*([A-Z0-9-]+)\)")
-RELEASE_DATE = re.compile(r"News Release\s+\d{4}-\d+\s*\|\s*([A-Z][a-z]+ \d{1,2}, \d{4})")
+RELEASE_DATE = re.compile(r"News Release\s+\d{4}-\d+\W{0,12}([A-Z][a-z]+\.? \d{1,2}, \d{4})")
+ANY_DATE = re.compile(r"\b((?:January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}, \d{4})")
 
 
 def html_lines(html: str) -> list[str]:
@@ -45,10 +46,27 @@ def release_links(index_html: str, base: str, limit: int = 13) -> list[str]:
     return list(dict.fromkeys(links))[:limit]
 
 
-def parse_release(html: str, url: str) -> list[dict]:
+def main_lines(html: str) -> list[str]:
+    """The release body: from its title to the media-contact footer."""
     lines = html_lines(html)
-    m = RELEASE_DATE.search(" ".join(lines[:60]))
-    released = datetime.strptime(m.group(1), "%B %d, %Y").date().isoformat() if m else ""
+    start = next((i for i, l in enumerate(lines) if TITLE.search(l)), 0)
+    end = next((i for i, l in enumerate(lines) if i > start and re.search(r"(?i)^media contact|^related link", l)), len(lines))
+    return lines[max(0, start - 3):end]
+
+
+def parse_release(html: str, url: str) -> list[dict]:
+    return parse_lines(main_lines(html), url)
+
+
+def parse_lines(lines: list[str], url: str) -> list[dict]:
+    head = " ".join(lines[:15])
+    m = RELEASE_DATE.search(head) or ANY_DATE.search(head)
+    released = ""
+    if m:
+        try:
+            released = datetime.strptime(m.group(1).replace(".", ""), "%B %d, %Y").date().isoformat()
+        except ValueError:
+            released = ""
     actions, inside = [], False
     for line in lines:
         line = re.sub(r",?\s+(National Association|N\.A\.)(?=,)", " N.A.", line)
@@ -105,7 +123,7 @@ def load_occ(fetch, cache: dict, today_year: int, sleep=None) -> tuple[list[dict
     fetched = failed = 0
     for y, n in candidate_releases(pages, today_year):
         url = RELEASE_URL.format(year=y, n=n)
-        if url in cache:
+        if url in cache and not (cache[url]["enforcement"] and not cache[url].get("lines")):
             continue
         if fetched >= MAX_NEW_FETCHES:
             break
@@ -120,9 +138,13 @@ def load_occ(fetch, cache: dict, today_year: int, sleep=None) -> tuple[list[dict
                 cache[url] = {"enforcement": False, "actions": []}
             continue
         is_enf = bool(TITLE.search(html))
-        cache[url] = {"enforcement": is_enf, "actions": parse_release(html, url) if is_enf else []}
-    enf = [v for v in cache.values() if v["enforcement"]]
-    actions = [a for v in enf for a in v["actions"]]
+        cache[url] = {"enforcement": is_enf, "lines": main_lines(html) if is_enf else []}
+    # Re-parse from saved text every run, so parser fixes apply without re-downloading.
+    enf = {u: v for u, v in cache.items() if v["enforcement"]}
+    actions = []
+    for u, v in enf.items():
+        v.pop("actions", None)
+        actions += parse_lines(v.get("lines", []), u)
     if not pages and not fetched:
         return actions, f"unavailable this run; using {len(enf)} cached monthly releases"
     return actions, (f"ok, {len(enf)} monthly enforcement releases known ({fetched} new pages checked, "
