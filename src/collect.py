@@ -214,6 +214,31 @@ def tag_fed(items: list[dict]) -> str:
     return f"read {read} new orders, {failed} unreadable, {len(cache)} cached"
 
 
+# ---- Fit with the target buyer -------------------------------------------
+# The buyer is fintechs, payment companies, crypto firms, marketplaces and the
+# sponsor banks behind them. Community banks and megabanks are weak fits.
+MEGABANKS = ["bank of america", "american express", "jpmorgan", "chase bank", "wells fargo", "citibank",
+             "citigroup", "capital one", "u.s. bank", "pnc", "truist", "goldman sachs", "morgan stanley"]
+SEGMENT_FIT = {"Fintech / payments": 15, "Crypto": 15, "Marketplace / ecommerce": 15, "Sponsor bank": 10,
+               "Regional bank": 0, "Community bank": -20, "Megabank": -30}
+UNVERIFIED_PENALTY = 15   # partner link reported in older or third-party sources; confirm before outreach
+
+PARTNER_SOLUTIONS = ["Transaction Monitoring", "Global KYB", "Global KYC", "Agentic AML Ops"]
+SPONSOR_SOLUTIONS = ["Sponsor Banking", "Transaction Monitoring", "Agentic AML Ops", "Global KYB"]
+ICP_SEGMENTS = {"Fintech / payments", "Crypto", "Marketplace / ecommerce", "Sponsor bank"}
+
+
+def segment_of(item: dict) -> str:
+    if item.get("segment"):
+        return item["segment"]
+    name = item["institution"].lower()
+    if any(m in name for m in MEGABANKS):
+        return "Megabank"
+    if "Third-party / fintech" in item.get("themes", []):
+        return "Sponsor bank"
+    return "Community bank"   # most Fed holding-company actions
+
+
 def score(item: dict, today: date) -> int:
     s = max((THEME_WEIGHT.get(t, 0) for t in item["themes"]), default=0)
     action = item.get("action", "").lower()
@@ -222,18 +247,60 @@ def score(item: dict, today: date) -> int:
         s += 10
     age = (today - date.fromisoformat(item["date"])).days
     s += 25 if age <= 90 else 15 if age <= FRESH_DAYS else 5
-    return min(s, 100)
+    s += SEGMENT_FIT.get(item.get("segment", ""), 0)
+    if item.get("verify"):
+        s -= UNVERIFIED_PENALTY
+    return max(0, min(s, 100))
 
 
 def enrich(item: dict, today: date) -> dict:
     item["themes"] = classify(item)
+    item["segment"] = segment_of(item)
+    item["icp"] = item["segment"] in ICP_SEGMENTS
     lead = next((t for t in item["themes"] if t in PLAYBOOK), None)
-    item["solutions"] = list(dict.fromkeys(p for t in item["themes"] for p in PLAYBOOK.get(t, [])))
-    item["opener"] = OPENERS.get(lead, "") if lead else ""
+    if item.get("via"):
+        item["solutions"] = PARTNER_SOLUTIONS
+    elif item["segment"] == "Sponsor bank":
+        item["solutions"] = SPONSOR_SOLUTIONS
+    else:
+        item["solutions"] = list(dict.fromkeys(p for t in item["themes"] for p in PLAYBOOK.get(t, [])))
+    if not item.get("opener"):
+        item["opener"] = OPENERS.get(lead, "") if lead else ""
     age = (today - date.fromisoformat(item["date"])).days
-    item["tier"] = "Just hit" if age <= FRESH_DAYS else "Remediating"
+    if not item.get("tier"):
+        item["tier"] = "Just hit" if age <= FRESH_DAYS else "Remediating"
     item["score"] = score(item, today)
     return item
+
+
+PARTNER_OPENER = ("{bank} is under a {regulator} {action_lc}. Sponsor banks under orders push their partners for "
+                  "stronger monitoring and KYC evidence. Is {partner} getting more compliance questions from {bank} yet?")
+
+
+def fan_out(actions: list[dict]) -> list[dict]:
+    """Turn each sponsor bank's documented fintech partners into target rows of their own."""
+    rows = []
+    for a in actions:
+        for p in a.get("partners", []):
+            rows.append({
+                "institution": p["name"],
+                "regulator": a["regulator"],
+                "action": f"Partner of {a['institution']} ({a['action']})",
+                "date": a["date"],
+                "summary": f"Runs on {a['institution']}, which is under this order. {p.get('note', '')}".strip(),
+                "themes": list(dict.fromkeys(a.get("themes", []) + ["Third-party / fintech"])),
+                "segment": p.get("segment", "Fintech / payments"),
+                "tier": "Partner of a bank under order",
+                "via": a["institution"],
+                "url": p.get("source", a.get("url", "")),
+                "opener": PARTNER_OPENER.format(bank=a["institution"].split(" (")[0], regulator=a["regulator"],
+                                                action_lc=a["action"].lower().split(" (")[0],
+                                                partner=p["name"]),
+                "active_order": a.get("active_order", False),
+                "verify": bool(re.search(r"confirm", p.get("note", ""), re.I)),
+                "source": "Partner of curated action",
+            })
+    return rows
 
 
 def dedupe(items: list[dict]) -> list[dict]:
@@ -267,7 +334,8 @@ def mark_new(items: list[dict], today: date) -> None:
 
 def write_markdown(items: list[dict], month: str, statuses: dict) -> Path:
     TARGETS_DIR.mkdir(exist_ok=True)
-    top = [i for i in items if i["solutions"]][:25]
+    fit = [i for i in items if i.get("icp")][:30]
+    other = [i for i in items if not i.get("icp") and i["solutions"]][:15]
     fresh = [i for i in items if i.get("new")]
     lines = [
         f"# Target list: {month}",
@@ -278,21 +346,17 @@ def write_markdown(items: list[dict], month: str, statuses: dict) -> Path:
         "## New this week",
         "",
     ]
-    lines += [f"- **{i['institution']}** ({i['regulator']}, {i['action']}, {i['date']}): "
-              f"{', '.join(i['themes'])}" for i in fresh] or ["- Nothing new since last Monday."]
-    lines += [
-        "",
-        "## All current targets",
-        "",
-        "| Score | Institution | Regulator | Action | Date | Themes | Lead with |",
-        "|---:|---|---|---|---|---|---|",
-    ]
-    for i in top:
-        inst = f"[{i['institution']}]({i['url']})" if i.get("url") else i["institution"]
-        lines.append(f"| {i['score']} | {inst} | {i['regulator']} | {i['action']} | {i['date']} | "
-                     f"{', '.join(i['themes'])} | {', '.join(i['solutions'][:3])} |")
-    if not top:
-        lines.append("| – | No classified actions this period | | | | | |")
+    lines += [f"- **{i['institution']}** ({i['segment']}; {i['regulator']}: {i['action']}, {i['date']})"
+              for i in fresh] or ["- Nothing new since last Monday."]
+    def table(rows):
+        out = ["| Score | Target | Segment | Why now | Date | Lead with |", "|---:|---|---|---|---|---|"]
+        for i in rows:
+            inst = f"[{i['institution']}]({i['url']})" if i.get("url") else i["institution"]
+            out.append(f"| {i['score']} | {inst} | {i['segment']} | {i['regulator']}: {i['action']} | {i['date']} | "
+                       f"{', '.join(i['solutions'][:3])} |")
+        return out if rows else ["- None this period."]
+    lines += ["", "## Best-fit targets (fintechs, crypto, sponsor banks)", ""] + table(fit)
+    lines += ["", "## Other banks (weaker fit: community banks and megabanks)", ""] + table(other)
     lines += ["", "## Source status", ""] + [f"- {k}: {v}" for k, v in statuses.items()]
     lines += ["", "Unclassified Federal Reserve actions are on the dashboard; open the order to check the theme, "
               "then add it to `data/manual_actions.json` with `themes` set."]
@@ -310,7 +374,11 @@ def main() -> int:
     cutoff = today - timedelta(days=LOOKBACK_DAYS)
     fed = [i for i in fed if date.fromisoformat(i["date"]) >= cutoff]
     statuses["Fed order tagging"] = tag_fed(fed)
-    items = [i for i in dedupe(manual + fed) if date.fromisoformat(i["date"]) >= cutoff]
+    live = lambda i: i.get("active_order") or date.fromisoformat(i["date"]) >= cutoff
+    manual = [i for i in manual if live(i)]
+    partners = fan_out(manual)
+    statuses["Partners of banks under order"] = f"{len(partners)} fintech/crypto targets"
+    items = [i for i in dedupe(manual + partners + fed) if live(i)]
     items = sorted((enrich(i, today) for i in items), key=lambda i: (-i["score"], i["date"]))
     mark_new(items, today)
     month = today.strftime("%Y-%m")

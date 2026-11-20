@@ -43,7 +43,7 @@ footer{color:var(--mute);font-size:14px;border-top:1px solid var(--line);padding
 <header><div class="wrap">
  <div class="mono">Independent research project · updated every Monday</div>
  <h1>Enforcement Signals</h1>
- <p>Public bank enforcement actions, sorted by how strongly they signal a need for fraud, AML and sanctions tooling. Each one shows the themes behind the action and a suggested opening question.</p>
+ <p>When regulators hit a sponsor bank, every fintech on its rails inherits the pressure. This tracker turns public enforcement actions into a ranked list of fintechs, crypto firms and sponsor banks with a reason to fix fraud and AML controls now, plus a suggested opening question for each.</p>
  <div class="stats" id="stats"></div>
 </div></header>
 <main class="wrap">
@@ -55,26 +55,29 @@ footer{color:var(--mute);font-size:14px;border-top:1px solid var(--line);padding
 {
 const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
 const col=s=>s>=80?"#c0392b":s>=60?"#e4572e":s>=40?"#c98a12":"#6b7390";
-let data=[],cur="All";
+let data=[],cur="Best fit";
+const VIEWS={"Best fit":a=>a.icp,"Fintech & crypto":a=>["Fintech / payments","Crypto","Marketplace / ecommerce"].includes(a.segment),
+ "Sponsor banks":a=>a.segment==="Sponsor bank","Other banks":a=>!a.icp,"All":a=>true};
 const bar=document.getElementById("bar"),list=document.getElementById("list");
 function render(){
- const rows=data.filter(a=>cur==="All"||a.themes.includes(cur));
+ const rows=data.filter(VIEWS[cur]);
  for(const b of bar.querySelectorAll("button"))b.setAttribute("aria-pressed",b.dataset.t===cur);
  list.innerHTML=rows.length?rows.map(a=>`<article class="row"><div class="score" style="--c:${col(a.score)}">${a.score}</div><div>
   <h2>${a.new?'<span class="tag" style="background:#e4572e;color:#fff;border-color:#e4572e;margin-right:6px;vertical-align:2px">New</span>':''}${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.institution)}</a>`:esc(a.institution)}</h2>
-  <div class="meta">${esc(a.regulator)} · ${esc(a.action)} · ${esc(a.date)} · ${esc(a.tier)}</div>
+  <div class="meta">${esc(a.segment)} · ${esc(a.tier)}</div>
+  <div class="meta">${a.via?`Runs on ${esc(a.via)}, under ${esc(a.regulator)} order (${esc(a.date)})`:`${esc(a.regulator)} · ${esc(a.action)} · ${esc(a.date)}`}</div>
   <div class="tags">${a.themes.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}${a.solutions.slice(0,4).map(s=>`<span class="tag t">${esc(s)}</span>`).join("")}</div>
   ${a.summary?`<p class="sum">${esc(a.summary)}</p>`:""}
   ${a.opener?`<div class="op">${esc(a.opener)}</div>`:""}
- </div></article>`).join(""):'<p class="meta">No actions for this theme.</p>';
+ </div></article>`).join(""):'<p class="meta">Nothing in this view yet.</p>';
 }
 fetch("data.json").then(r=>r.json()).then(d=>{
  data=d.actions||[];
- const themes=["All",...new Set(data.flatMap(a=>a.themes))];
+ const themes=Object.keys(VIEWS);
  bar.innerHTML=themes.map(t=>`<button data-t="${esc(t)}">${esc(t)}</button>`).join("");
  bar.addEventListener("click",e=>{const b=e.target.closest("button");if(b){cur=b.dataset.t;render()}});
- const hot=data.filter(a=>a.score>=60).length;
- document.getElementById("stats").innerHTML=[[data.length,"actions tracked"],[data.filter(a=>a.new).length,"new this week"],[hot,"strong signals"],[d.generated,"last run"]]
+ const hot=data.filter(a=>a.icp).length;
+ document.getElementById("stats").innerHTML=[[data.length,"actions tracked"],[data.filter(a=>a.new).length,"new this week"],[hot,"best-fit targets"],[d.generated,"last run"]]
   .map(([v,l])=>`<div class="stat"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
  render();
 }).catch(()=>{list.innerHTML='<p class="meta">No data yet. The first monthly run will fill this in.</p>'});

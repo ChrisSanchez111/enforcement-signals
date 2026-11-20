@@ -27,7 +27,7 @@ class CollectTests(unittest.TestCase):
         self.assertEqual(collect.classify({"themes": ["Sanctions"], "summary": "bsa"}), ["Sanctions"])
 
     def test_enrich_scores_and_maps(self):
-        item = collect.enrich({"institution": "X", "regulator": "OCC", "action": "Consent order",
+        item = collect.enrich({"institution": "X", "regulator": "OCC", "action": "Consent order", "segment": "Sponsor bank",
                                "date": "2026-11-01", "summary": "BSA/AML failures"}, date(2026, 11, 20))
         self.assertIn("Transaction Monitoring", item["solutions"])
         self.assertEqual(item["tier"], "Just hit")
@@ -63,6 +63,25 @@ class CollectTests(unittest.TestCase):
             self.assertTrue(items[1]["new"])
         finally:
             collect.DATA_OUT = old
+
+    def test_fan_out_and_fit(self):
+        bank = {"institution": "Example Sponsor Bank (City, ST)", "regulator": "OCC", "action": "Consent order",
+                "date": "2026-11-01", "segment": "Sponsor bank", "themes": ["BSA/AML"],
+                "partners": [{"name": "PayCo", "segment": "Fintech / payments", "source": "https://x"}]}
+        rows = collect.fan_out([bank])
+        self.assertEqual(rows[0]["institution"], "PayCo")
+        self.assertIn("Third-party / fintech", rows[0]["themes"])
+        self.assertIn("Example Sponsor Bank", rows[0]["opener"])
+        fin = collect.enrich(rows[0], date(2026, 11, 20))
+        comm = collect.enrich({"institution": "Small Bancshares", "regulator": "Federal Reserve",
+                               "action": "Written Agreement", "date": "2026-11-01", "themes": ["BSA/AML"]},
+                              date(2026, 11, 20))
+        self.assertTrue(fin["icp"])
+        self.assertFalse(comm["icp"])
+        self.assertGreater(fin["score"], comm["score"])
+
+    def test_megabank_detected(self):
+        self.assertEqual(collect.segment_of({"institution": "Wells Fargo Bank, N.A.", "themes": []}), "Megabank")
 
 
 if __name__ == "__main__":

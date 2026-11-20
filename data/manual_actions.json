@@ -1,10 +1,101 @@
 [
   {
+    "institution": "Community Federal Savings Bank (Woodhaven, NY)",
+    "regulator": "OCC",
+    "action": "Consent order",
+    "date": "2026-04-24",
+    "segment": "Sponsor bank",
+    "summary": "BSA/AML program deficiencies tied to a payment processing line that grew faster than its controls; weak customer due diligence, suspicious activity monitoring, staffing and independent testing. Requires an end-to-end BSA/AML program review and a third-party risk assessment.",
+    "themes": ["BSA/AML", "Third-party / fintech"],
+    "url": "https://www.bankingdive.com/news/occ-community-federal-savings-bank-new-york-aml-bsa-sar-deficiencies-fintech-partner/821272/",
+    "partners": [
+      {"name": "Wise", "segment": "Fintech / payments", "note": "CFSB is the sponsor bank for Wise's U.S. dollar accounts.",
+       "source": "https://connect.cefpro.com/article/view/community-federal-faces-occ-crackdown-over-aml-failures"},
+      {"name": "Crypto.com", "segment": "Crypto", "note": "CFSB is the sponsor bank for Crypto.com's prepaid card program.",
+       "source": "https://connect.cefpro.com/article/view/community-federal-faces-occ-crackdown-over-aml-failures"}
+    ]
+  },
+  {
+    "institution": "United Texas Bank, N.A. (Dallas, TX)",
+    "regulator": "OCC",
+    "action": "Cease and desist order",
+    "date": "2026-06-12",
+    "segment": "Sponsor bank",
+    "summary": "BSA/AML compliance program deficiencies; order entered as a condition of converting to a national charter, carrying forward the corrective actions from a 2024 Federal Reserve order. A crypto-focused bank that reports more than $120B a year in crypto transaction volume. Released July 16, 2026.",
+    "themes": ["BSA/AML", "Third-party / fintech"],
+    "url": "https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf",
+    "partners": [
+      {"name": "Circle (USDC)", "segment": "Crypto", "note": "Reported in 2024 as a past United Texas Bank relationship; confirm it is current before outreach.",
+       "source": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management"},
+      {"name": "Stellar Development Foundation", "segment": "Crypto", "note": "Reported in 2024 as a past United Texas Bank relationship; confirm it is current before outreach.",
+       "source": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management"}
+    ]
+  },
+  {
+    "institution": "Lineage Bank (Franklin, TN)",
+    "regulator": "FDIC",
+    "action": "Consent order",
+    "date": "2026-06-24",
+    "segment": "Community bank",
+    "summary": "Second FDIC consent order; former Synapse partner bank. Requires a three-year business plan, earnings and problem-credit plans. The bank has rebranded as Harpeth and is pivoting back to community banking, so it is exiting fintech rather than buying for it.",
+    "themes": ["Third-party / fintech", "Safety & soundness"],
+    "url": "https://www.pymnts.com/?p=4027596"
+  },
+  {
+    "institution": "Evolve Bank & Trust (West Memphis, AR)",
+    "regulator": "Federal Reserve",
+    "action": "Cease and desist order",
+    "date": "2024-06-14",
+    "active_order": true,
+    "segment": "Sponsor bank",
+    "summary": "Federal Reserve cease and desist over weak AML/BSA, OFAC violations and poor control of fintech partnerships; Synapse's partner bank. Listed as still under public enforcement remediation in August 2026. In April 2026 Coastal Community Bank signed a term sheet to take over certain Evolve programs.",
+    "themes": ["BSA/AML", "Sanctions", "Third-party / fintech"],
+    "url": "https://wiki.private.law/en/baas-sponsor-bank",
+    "partners": [
+      {"name": "Affirm", "segment": "Fintech / payments", "note": "Evolve has been the issuing bank for the Affirm Card since 2021.",
+       "source": "https://americanbanker.com/payments/news/affirm-adds-stride-bank-as-baas-provider-for-card-issuance"},
+      {"name": "Airwallex", "segment": "Fintech / payments", "note": "Listed on Evolve's partner page.", "source": "https://www.getevolved.com/?p=79"},
+      {"name": "Branch", "segment": "Fintech / payments", "note": "Listed on Evolve's partner page.", "source": "https://www.getevolved.com/?p=79"},
+      {"name": "Earnin", "segment": "Fintech / payments", "note": "Listed on Evolve's partner page.", "source": "https://www.getevolved.com/?p=79"},
+      {"name": "Melio", "segment": "Fintech / payments", "note": "Listed as an Evolve partner by a third-party directory; confirm before outreach.", "source": "https://banq.ai/provider/evolve-bank-and-trust"},
+      {"name": "Step", "segment": "Fintech / payments", "note": "Listed as an Evolve partner by a third-party directory; confirm before outreach.", "source": "https://banq.ai/provider/evolve-bank-and-trust"}
+    ]
+  },
+  {
+    "institution": "Sutton Bank (Attica, OH)",
+    "regulator": "FDIC",
+    "action": "Consent order",
+    "date": "2024-02-01",
+    "active_order": true,
+    "segment": "Sponsor bank",
+    "summary": "FDIC consent order covering BSA/AML, transaction lookbacks and oversight of BaaS partners. Listed as still under public enforcement remediation in August 2026. Issuing bank behind 150+ debit and prepaid programs.",
+    "themes": ["BSA/AML", "Third-party / fintech"],
+    "url": "https://paymentrailsreview.com/read/banking-as-a-service-consent-orders/",
+    "partners": [
+      {"name": "Cash App (Block)", "segment": "Fintech / payments", "note": "Sutton is the issuing bank for Cash App debit cards.",
+       "source": "https://joingerald.com/learn/banking--payments/sutton-bank-explained"},
+      {"name": "Thredd", "segment": "Fintech / payments", "note": "Partnered with Sutton in June 2026 to launch U.S. card programs for global brands.",
+       "source": "https://www.businesswire.com/news/home/20260617515344/en/"}
+    ]
+  },
+  {
+    "institution": "Piermont Bank (New York, NY)",
+    "regulator": "FDIC",
+    "action": "Consent order",
+    "date": "2024-02-26",
+    "active_order": true,
+    "segment": "Sponsor bank",
+    "summary": "FDIC consent order covering BSA/AML, transaction lookbacks and third-party (BaaS) partner oversight. Listed as still under public enforcement remediation in August 2026.",
+    "themes": ["BSA/AML", "Third-party / fintech"],
+    "url": "https://paymentrailsreview.com/read/banking-as-a-service-consent-orders/"
+  },
+  {
     "institution": "American Express National Bank (Sandy, UT)",
     "regulator": "OCC",
     "action": "Cease and desist order and civil money penalty ($350M)",
     "date": "2026-10-08",
-    "summary": "BSA program deficiencies: weak risk assessment of the card business, ineffective customer due diligence and risk rating, inconsistent customer identification, untimely or missed SARs, weak independent testing and staffing. OCC tied the gaps to roughly $13B in suspected trade-based money laundering (2014–2025). A parallel Federal Reserve consent order adds transaction monitoring, fraud-referral, third-party risk and OFAC remediation.",
+    "segment": "Megabank",
+    "summary": "BSA program deficiencies: weak risk assessment of the card business, ineffective customer due diligence and risk rating, untimely or missed SARs. OCC tied the gaps to roughly $13B in suspected trade-based money laundering. A parallel Federal Reserve order adds transaction monitoring, fraud-referral, third-party risk and OFAC remediation. Best used as a peer story for mid-size card issuers.",
     "themes": ["BSA/AML", "Sanctions", "Third-party / fintech", "Fraud / consumer"],
     "penalty_usd": 350000000,
     "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html"
@@ -14,7 +105,8 @@
     "regulator": "OCC",
     "action": "Civil money penalty ($750M)",
     "date": "2026-10-22",
-    "summary": "BSA compliance program deficiencies, failure to timely file suspicious activity reports, and wires sent with inaccurate originator information. Date shown is the OCC release date.",
+    "segment": "Megabank",
+    "summary": "BSA compliance program deficiencies, late suspicious activity reports, and wires sent with inaccurate originator information. Date shown is the OCC release date.",
     "themes": ["BSA/AML"],
     "penalty_usd": 750000000,
     "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html"
@@ -24,18 +116,10 @@
     "regulator": "FinCEN",
     "action": "Consent order imposing civil money penalty ($1.2B)",
     "date": "2026-10-27",
+    "segment": "Megabank",
     "summary": "Bank Secrecy Act violations; $1.2B civil money penalty with undertakings. Date shown is when the order was reported.",
     "themes": ["BSA/AML"],
     "penalty_usd": 1200000000,
     "url": "https://www.fincen.gov/system/files/2026-10/BoA-Consent-Order-Execution-Final.pdf"
-  },
-  {
-    "institution": "Community Federal Savings Bank (Woodhaven, NY)",
-    "regulator": "OCC",
-    "action": "Consent order",
-    "date": "2026-04-24",
-    "summary": "BSA/AML program deficiencies tied to a payment processing line that grew faster than its controls; weak customer due diligence, suspicious activity monitoring, staffing and independent testing. Sponsor bank for Wise and Crypto.com. Requires an end-to-end BSA/AML program review and a third-party risk assessment.",
-    "themes": ["BSA/AML", "Third-party / fintech"],
-    "url": "https://www.bankingdive.com/news/occ-community-federal-savings-bank-new-york-aml-bsa-sar-deficiencies-fintech-partner/821272/"
   }
 ]

@@ -7,19 +7,25 @@ Weekly tracker of public bank enforcement actions (Federal Reserve, OCC, FDIC, F
 
 ## Why
 
-Enforcement actions are public, and they create a buying window. A consent order usually requires the bank to review its whole BSA/AML program and show progress on a deadline. The order also puts every peer bank on alert. This project turns those public records into a ranked prospect list, refreshed weekly with a reason to reach out.
+Enforcement actions are public, and they create buying windows. The useful insight is one step removed from the bank that got hit: when a sponsor bank is put under a consent order, it has to tighten oversight of every fintech on its rails, so those fintechs inherit the pressure to prove their transaction monitoring, KYC and KYB hold up.
+
+So the tracker ranks targets by fit, not just by severity:
+
+- **Best fit:** fintechs, payment companies and crypto firms that run on a bank under an order, plus the sponsor banks themselves.
+- **Weaker fit:** community banks (often capital-constrained) and megabanks (build in-house or have entrenched vendors). They stay on the list as peer stories.
 
 ## How it works
 
 1. **Collect.** Every Monday morning, a GitHub Action runs `src/collect.py`. It pulls the Federal Reserve's enforcement CSV and merges in curated actions from `data/manual_actions.json` (OCC, FDIC and FinCEN don't publish a clean machine-readable feed).
-2. **Classify.** Each action is tagged with themes (BSA/AML, sanctions, third-party/fintech, fraud/consumer, safety and soundness). For Federal Reserve actions, the script opens the press release and the attached order PDF and tags it from the order text; results are cached in `data/fed_cache.json` so each order is read once.
-3. **Score.** Theme, action severity, penalty and recency combine into a 0–100 signal score. Actions from the last 180 days are "Just hit"; older ones are "Remediating."
-4. **Map.** Each theme maps to the solution areas to lead with, plus a suggested opening question.
-5. **Publish.** Actions first seen in the last week are flagged as new. Results are committed to `docs/data.json` (the dashboard) and `targets/YYYY-MM.md` (the monthly list).
+2. **Fan out.** Each curated sponsor bank lists its publicly documented fintech partners, with a source link for every one. Each partner becomes its own target row, carrying the bank's order as its trigger. Partners reported only in older or third-party sources are marked "confirm before outreach" and scored lower.
+3. **Classify.** Each action is tagged with themes (BSA/AML, sanctions, third-party/fintech, fraud/consumer, safety and soundness). For Federal Reserve actions, the script opens the press release and the attached order PDF and tags it from the order text; results are cached in `data/fed_cache.json` so each order is read once.
+4. **Score.** Theme, action severity, penalty, recency and segment fit combine into a 0–100 score. Actions from the last 180 days are "Just hit"; older ones are "Remediating."
+5. **Map.** Each theme maps to the solution areas to lead with, plus a suggested opening question.
+6. **Publish.** Actions first seen in the last week are flagged as new. Results are committed to `docs/data.json` (the dashboard) and `targets/YYYY-MM.md` (the monthly list).
 
 ## Adding an action
 
-Add an entry to `data/manual_actions.json`:
+Add an entry to `data/manual_actions.json`. Set `active_order` for older orders that are still in force, so they stay on the list. Every partner needs a `source` link.
 
 ```json
 {
@@ -29,7 +35,13 @@ Add an entry to `data/manual_actions.json`:
   "date": "2026-11-01",
   "summary": "One or two lines from the order.",
   "themes": ["BSA/AML"],
-  "url": "https://link-to-the-order"
+  "url": "https://link-to-the-order",
+  "segment": "Sponsor bank",
+  "active_order": true,
+  "partners": [
+    {"name": "Example Fintech", "segment": "Fintech / payments",
+     "note": "Issuing bank for its debit card.", "source": "https://link-showing-the-relationship"}
+  ]
 }
 ```
 
@@ -45,7 +57,8 @@ Standard library plus `pypdf` (for reading the Fed's attached orders): `pip inst
 ## Roadmap
 
 - Automated OCC and FDIC collection
-- Peer-bank matching (similar size and fintech exposure to banks that were just hit)
+- Automated partner discovery (card issuer disclosures, fintech "banking services provided by" footers)
+- Fintech-direct sources: NYDFS and state money-transmitter actions, FinCEN MSB penalties
 - Hiring signals (BSA/AML analyst job postings)
 
 ## Disclaimer
