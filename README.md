@@ -46,6 +46,7 @@ Two adjustments: partner links reported only in older or third-party sources los
 - **The OCC is a trickle.** Many months have no bank actions at all, and most actions are capital or management problems at community banks.
 - **Federal Reserve tagging is keyword-based.** It reads the order text and needs two keyword hits per theme, so it can mis-tag an order. Some Fed orders can't be read and stay "Unclassified."
 - **Scores are judgment calls, not a trained model.** The weights encode one view of who buys and when. They're easy to change, and worth arguing about.
+- **Hiring signals are checked by hand.** Recent compliance hires and open AML roles (a sign of alert backlog or a team being built) are looked up on careers pages and LinkedIn and noted in the summary. No names are stored. Automating this is next.
 - **Name matching is simple.** Duplicate detection and the customer flag match on normalized names, so similarly named institutions can collide.
 
 ## Existing customers
