@@ -153,7 +153,7 @@ def classify(item: dict) -> list[str]:
 
 CACHE = ROOT / "data" / "fed_cache.json"
 MIN_HITS_ORDER = 2   # full orders are long; one stray mention shouldn't tag a theme
-MAX_PDF_PAGES = 12
+MAX_PDF_PAGES = 40
 
 
 def html_to_text(html: str) -> str:
