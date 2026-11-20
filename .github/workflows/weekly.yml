@@ -1,9 +1,9 @@
-name: Monthly target list
+name: Weekly target list
 
 on:
   schedule:
-    # 6th of every month, 13:17 UTC: after the OCC and FDIC monthly releases are usually out
-    - cron: "17 13 6 * *"
+    # Every Monday, 11:17 UTC (6:17 AM Eastern in winter, 7:17 AM in summer)
+    - cron: "17 11 * * 1"
   workflow_dispatch: {}
 
 permissions:
@@ -31,6 +31,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes this run."
           else
-            git commit -m "Monthly target list $(date -u +%Y-%m)"
+            git commit -m "Weekly target list $(date -u +%Y-%m-%d)"
             git push
           fi

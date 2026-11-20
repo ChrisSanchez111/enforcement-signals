@@ -47,6 +47,23 @@ class CollectTests(unittest.TestCase):
                                         get_pdf=lambda u: "")
         self.assertEqual(out["themes"], ["Safety & soundness"])
 
+    def test_mark_new_carries_first_seen(self):
+        import json, tempfile
+        tmp = Path(tempfile.mkdtemp()) / "data.json"
+        old = collect.DATA_OUT
+        collect.DATA_OUT = tmp
+        try:
+            a = {"institution": "A Bank", "regulator": "OCC", "date": "2026-10-01"}
+            b = {"institution": "B Bank", "regulator": "OCC", "date": "2026-11-01"}
+            tmp.write_text(json.dumps({"actions": [dict(a, first_seen="2026-10-05")]}))
+            items = [dict(a), dict(b)]
+            collect.mark_new(items, date(2026, 11, 23))
+            self.assertFalse(items[0]["new"])
+            self.assertEqual(items[0]["first_seen"], "2026-10-05")
+            self.assertTrue(items[1]["new"])
+        finally:
+            collect.DATA_OUT = old
+
 
 if __name__ == "__main__":
     unittest.main()

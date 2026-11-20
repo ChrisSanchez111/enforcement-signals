@@ -1,4 +1,4 @@
-"""Collect public bank enforcement actions and turn them into a monthly target list.
+"""Collect public bank enforcement actions and turn them into a weekly-refreshed target list.
 
 Sources
 - Federal Reserve enforcement actions CSV (automated).
@@ -246,14 +246,43 @@ def dedupe(items: list[dict]) -> list[dict]:
     return out
 
 
+def item_key(it: dict) -> str:
+    return "|".join([re.sub(r"\W", "", it["institution"].lower()), it["regulator"], it["date"]])
+
+
+def mark_new(items: list[dict], today: date) -> None:
+    """Carry each action's first_seen date from the last run; flag ones first seen in the last 7 days."""
+    prev = {}
+    if DATA_OUT.exists():
+        try:
+            last = json.loads(DATA_OUT.read_text())
+            # Older runs didn't record first_seen; treat their actions as seen on that run's date.
+            prev = {item_key(a): a.get("first_seen") or last.get("generated") for a in last.get("actions", [])}
+        except (ValueError, KeyError):
+            prev = {}
+    for it in items:
+        it["first_seen"] = prev.get(item_key(it)) or today.isoformat()
+        it["new"] = (today - date.fromisoformat(it["first_seen"])).days < 7 and bool(prev)
+
+
 def write_markdown(items: list[dict], month: str, statuses: dict) -> Path:
     TARGETS_DIR.mkdir(exist_ok=True)
     top = [i for i in items if i["solutions"]][:25]
+    fresh = [i for i in items if i.get("new")]
     lines = [
         f"# Target list: {month}",
         "",
-        f"Generated {date.today().isoformat()} from public enforcement records. "
+        f"Updated {date.today().isoformat()} (runs every Monday) from public enforcement records. "
         "Independent research project; not affiliated with any vendor or regulator.",
+        "",
+        "## New this week",
+        "",
+    ]
+    lines += [f"- **{i['institution']}** ({i['regulator']}, {i['action']}, {i['date']}): "
+              f"{', '.join(i['themes'])}" for i in fresh] or ["- Nothing new since last Monday."]
+    lines += [
+        "",
+        "## All current targets",
         "",
         "| Score | Institution | Regulator | Action | Date | Themes | Lead with |",
         "|---:|---|---|---|---|---|---|",
@@ -283,6 +312,7 @@ def main() -> int:
     statuses["Fed order tagging"] = tag_fed(fed)
     items = [i for i in dedupe(manual + fed) if date.fromisoformat(i["date"]) >= cutoff]
     items = sorted((enrich(i, today) for i in items), key=lambda i: (-i["score"], i["date"]))
+    mark_new(items, today)
     month = today.strftime("%Y-%m")
     DATA_OUT.parent.mkdir(exist_ok=True)
     DATA_OUT.write_text(json.dumps({"generated": today.isoformat(), "month": month,

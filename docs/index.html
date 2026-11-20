@@ -41,7 +41,7 @@ footer{color:var(--mute);font-size:14px;border-top:1px solid var(--line);padding
 </head>
 <body>
 <header><div class="wrap">
- <div class="mono">Independent research project · updated monthly</div>
+ <div class="mono">Independent research project · updated every Monday</div>
  <h1>Enforcement Signals</h1>
  <p>Public bank enforcement actions, sorted by how strongly they signal a need for fraud, AML and sanctions tooling. Each one shows the themes behind the action and a suggested opening question.</p>
  <div class="stats" id="stats"></div>
@@ -61,7 +61,7 @@ function render(){
  const rows=data.filter(a=>cur==="All"||a.themes.includes(cur));
  for(const b of bar.querySelectorAll("button"))b.setAttribute("aria-pressed",b.dataset.t===cur);
  list.innerHTML=rows.length?rows.map(a=>`<article class="row"><div class="score" style="--c:${col(a.score)}">${a.score}</div><div>
-  <h2>${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.institution)}</a>`:esc(a.institution)}</h2>
+  <h2>${a.new?'<span class="tag" style="background:#e4572e;color:#fff;border-color:#e4572e;margin-right:6px;vertical-align:2px">New</span>':''}${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.institution)}</a>`:esc(a.institution)}</h2>
   <div class="meta">${esc(a.regulator)} · ${esc(a.action)} · ${esc(a.date)} · ${esc(a.tier)}</div>
   <div class="tags">${a.themes.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}${a.solutions.slice(0,4).map(s=>`<span class="tag t">${esc(s)}</span>`).join("")}</div>
   ${a.summary?`<p class="sum">${esc(a.summary)}</p>`:""}
@@ -74,7 +74,7 @@ fetch("data.json").then(r=>r.json()).then(d=>{
  bar.innerHTML=themes.map(t=>`<button data-t="${esc(t)}">${esc(t)}</button>`).join("");
  bar.addEventListener("click",e=>{const b=e.target.closest("button");if(b){cur=b.dataset.t;render()}});
  const hot=data.filter(a=>a.score>=60).length;
- document.getElementById("stats").innerHTML=[[data.length,"actions tracked"],[hot,"strong signals"],[d.generated,"last run"]]
+ document.getElementById("stats").innerHTML=[[data.length,"actions tracked"],[data.filter(a=>a.new).length,"new this week"],[hot,"strong signals"],[d.generated,"last run"]]
   .map(([v,l])=>`<div class="stat"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
  render();
 }).catch(()=>{list.innerHTML='<p class="meta">No data yet. The first monthly run will fill this in.</p>'});
