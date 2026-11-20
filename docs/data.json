@@ -3,7 +3,7 @@
   "month": "2026-11",
   "sources": {
     "Federal Reserve CSV": "ok (https://www.federalreserve.gov/supervisionreg/files/enforcementactions.csv), 334 open institution actions",
-    "OCC monthly releases": "ok, 22 monthly enforcement releases known (54 new pages checked, 0 errors), 0 bank actions",
+    "OCC monthly releases": "ok, 22 monthly enforcement releases known (0 new pages checked, 0 errors), 15 bank actions",
     "Curated (OCC, FDIC, FinCEN, other)": "9 actions",
     "Fed order tagging": "read 0 new orders, 2 unreadable, 3 cached",
     "Partners of banks under order": "12 fintech/crypto targets"
@@ -39,10 +39,10 @@
       "customer": false,
       "icp": true,
       "solutions": [
+        "Sanctions Screening",
         "Sponsor Banking",
         "Transaction Monitoring",
-        "Agentic AML Ops",
-        "Global KYB"
+        "Agentic AML Ops"
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Just hit",
@@ -65,6 +65,7 @@
       "via": "Sutton Bank (Attica, OH)",
       "url": "https://joingerald.com/learn/banking--payments/sutton-bank-explained",
       "opener": "Sutton Bank is under a FDIC consent order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Cash App (Block) getting more compliance questions from Sutton Bank yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Cash App (Block) keeping approval rates up while Sutton Bank asks for more evidence?",
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
@@ -73,8 +74,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 80,
       "first_seen": "2026-11-20",
@@ -95,6 +97,7 @@
       "via": "Sutton Bank (Attica, OH)",
       "url": "https://www.businesswire.com/news/home/20260617515344/en/",
       "opener": "Sutton Bank is under a FDIC consent order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Thredd getting more compliance questions from Sutton Bank yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Thredd keeping approval rates up while Sutton Bank asks for more evidence?",
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
@@ -103,8 +106,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 80,
       "first_seen": "2026-11-20",
@@ -126,6 +130,7 @@
       "via": "Evolve Bank & Trust (West Memphis, AR)",
       "url": "https://americanbanker.com/payments/news/affirm-adds-stride-bank-as-baas-provider-for-card-issuance",
       "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Affirm getting more compliance questions from Evolve Bank & Trust yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Affirm keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
@@ -134,8 +139,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 80,
       "first_seen": "2026-11-20",
@@ -157,6 +163,7 @@
       "via": "Evolve Bank & Trust (West Memphis, AR)",
       "url": "https://www.getevolved.com/?p=79",
       "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Airwallex getting more compliance questions from Evolve Bank & Trust yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Airwallex keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
@@ -165,8 +172,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 80,
       "first_seen": "2026-11-20",
@@ -188,6 +196,7 @@
       "via": "Evolve Bank & Trust (West Memphis, AR)",
       "url": "https://www.getevolved.com/?p=79",
       "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Branch getting more compliance questions from Evolve Bank & Trust yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Branch keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
@@ -196,8 +205,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 80,
       "first_seen": "2026-11-20",
@@ -219,6 +229,7 @@
       "via": "Evolve Bank & Trust (West Memphis, AR)",
       "url": "https://www.getevolved.com/?p=79",
       "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Earnin getting more compliance questions from Evolve Bank & Trust yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Earnin keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
@@ -227,8 +238,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 80,
       "first_seen": "2026-11-20",
@@ -249,6 +261,7 @@
       "via": "Community Federal Savings Bank (Woodhaven, NY)",
       "url": "https://connect.cefpro.com/article/view/community-federal-faces-occ-crackdown-over-aml-failures",
       "opener": "Community Federal Savings Bank is under a OCC consent order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Wise getting more compliance questions from Community Federal Savings Bank yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Wise keeping approval rates up while Community Federal Savings Bank asks for more evidence?",
       "active_order": false,
       "verify": false,
       "source": "Partner of curated action",
@@ -257,8 +270,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 80,
       "first_seen": "2026-11-20",
@@ -279,6 +293,7 @@
       "via": "Community Federal Savings Bank (Woodhaven, NY)",
       "url": "https://connect.cefpro.com/article/view/community-federal-faces-occ-crackdown-over-aml-failures",
       "opener": "Community Federal Savings Bank is under a OCC consent order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Crypto.com getting more compliance questions from Community Federal Savings Bank yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Crypto.com keeping approval rates up while Community Federal Savings Bank asks for more evidence?",
       "active_order": false,
       "verify": false,
       "source": "Partner of curated action",
@@ -287,8 +302,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 80,
       "first_seen": "2026-11-20",
@@ -325,10 +341,10 @@
       "customer": false,
       "icp": true,
       "solutions": [
+        "Sanctions Screening",
         "Sponsor Banking",
         "Transaction Monitoring",
-        "Agentic AML Ops",
-        "Global KYB"
+        "Agentic AML Ops"
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Remediating",
@@ -353,10 +369,10 @@
       "customer": false,
       "icp": true,
       "solutions": [
+        "Sanctions Screening",
         "Sponsor Banking",
         "Transaction Monitoring",
-        "Agentic AML Ops",
-        "Global KYB"
+        "Agentic AML Ops"
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Remediating",
@@ -420,10 +436,10 @@
       "customer": false,
       "icp": true,
       "solutions": [
+        "Sanctions Screening",
         "Sponsor Banking",
         "Transaction Monitoring",
-        "Agentic AML Ops",
-        "Global KYB"
+        "Agentic AML Ops"
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Remediating",
@@ -461,10 +477,10 @@
       "customer": false,
       "icp": true,
       "solutions": [
+        "Sanctions Screening",
         "Sponsor Banking",
         "Transaction Monitoring",
-        "Agentic AML Ops",
-        "Global KYB"
+        "Agentic AML Ops"
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Remediating",
@@ -487,6 +503,7 @@
       "via": "United Texas Bank, N.A. (Dallas, TX)",
       "url": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management",
       "opener": "United Texas Bank, N.A. is under a OCC cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Circle (USDC) getting more compliance questions from United Texas Bank, N.A. yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Circle (USDC) keeping approval rates up while United Texas Bank, N.A. asks for more evidence?",
       "active_order": false,
       "verify": true,
       "source": "Partner of curated action",
@@ -495,8 +512,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 75,
       "first_seen": "2026-11-20",
@@ -517,6 +535,7 @@
       "via": "United Texas Bank, N.A. (Dallas, TX)",
       "url": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management",
       "opener": "United Texas Bank, N.A. is under a OCC cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Stellar Development Foundation getting more compliance questions from United Texas Bank, N.A. yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Stellar Development Foundation keeping approval rates up while United Texas Bank, N.A. asks for more evidence?",
       "active_order": false,
       "verify": true,
       "source": "Partner of curated action",
@@ -525,8 +544,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 75,
       "first_seen": "2026-11-20",
@@ -548,6 +568,7 @@
       "via": "Evolve Bank & Trust (West Memphis, AR)",
       "url": "https://banq.ai/provider/evolve-bank-and-trust",
       "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Melio getting more compliance questions from Evolve Bank & Trust yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Melio keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
       "active_order": true,
       "verify": true,
       "source": "Partner of curated action",
@@ -556,8 +577,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 65,
       "first_seen": "2026-11-20",
@@ -579,6 +601,7 @@
       "via": "Evolve Bank & Trust (West Memphis, AR)",
       "url": "https://banq.ai/provider/evolve-bank-and-trust",
       "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Step getting more compliance questions from Evolve Bank & Trust yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Step keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
       "active_order": true,
       "verify": true,
       "source": "Partner of curated action",
@@ -587,8 +610,9 @@
       "solutions": [
         "Transaction Monitoring",
         "Global KYB",
-        "Global KYC",
-        "Agentic AML Ops"
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
       ],
       "score": 65,
       "first_seen": "2026-11-20",
@@ -824,6 +848,27 @@
       "opener": "",
       "tier": "Just hit",
       "score": 10,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "The Federal Savings Bank (Chicago, Illinois)",
+      "regulator": "OCC",
+      "action": "Consent Order",
+      "date": "2026-04-16",
+      "summary": "violations of Section 5 of the Federal Trade Commission Act relating to the bank\u2019s deceptive acts or practices that induced consumers to obtain cash-out refinance loans guaranteed by the U.S. Department of Veterans Affairs involving significant origination fees, increased interest rates, and increased monthly payments.",
+      "url": "https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2025-63.pdf",
+      "source": "OCC monthly release",
+      "themes": [
+        "Unclassified"
+      ],
+      "segment": "Community bank",
+      "customer": false,
+      "icp": false,
+      "solutions": [],
+      "opener": "",
+      "tier": "Remediating",
+      "score": 5,
       "first_seen": "2026-11-20",
       "new": true
     }
