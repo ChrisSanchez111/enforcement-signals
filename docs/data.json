@@ -2,7 +2,7 @@
   "generated": "2026-11-20",
   "month": "2026-11",
   "sources": {
-    "Federal Reserve CSV": "unavailable this run (URLError), 0 open institution actions",
+    "Federal Reserve CSV": "ok (https://www.federalreserve.gov/supervisionreg/files/enforcementactions.csv), 334 open institution actions",
     "Curated (OCC, FDIC, FinCEN, other)": "4 actions"
   },
   "actions": [
@@ -104,6 +104,86 @@
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Remediating",
       "score": 65
+    },
+    {
+      "institution": "American Express Company, New York, New York; American Express Travel Related Services Company, Inc., New York, New York",
+      "regulator": "Federal Reserve",
+      "action": "Cease and Desist Order",
+      "date": "2026-10-08",
+      "summary": "",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261008a.htm",
+      "source": "Federal Reserve CSV",
+      "themes": [
+        "Unclassified"
+      ],
+      "solutions": [],
+      "opener": "",
+      "tier": "Just hit",
+      "score": 45
+    },
+    {
+      "institution": "Ontario Bancorporation, Inc., Ontario, Wisconsin",
+      "regulator": "Federal Reserve",
+      "action": "Written Agreement",
+      "date": "2026-09-24",
+      "summary": "",
+      "url": "/newsevents/pressreleases/enforcement20261002a.htm",
+      "source": "Federal Reserve CSV",
+      "themes": [
+        "Unclassified"
+      ],
+      "solutions": [],
+      "opener": "",
+      "tier": "Just hit",
+      "score": 40
+    },
+    {
+      "institution": "TS Banking Group, Inc., Treynor, Iowa and TS Contrarian Bancshares, Inc., Treynor, Iowa",
+      "regulator": "Federal Reserve",
+      "action": "Written Agreement",
+      "date": "2026-07-06",
+      "summary": "",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260709a.htm",
+      "source": "Federal Reserve CSV",
+      "themes": [
+        "Unclassified"
+      ],
+      "solutions": [],
+      "opener": "",
+      "tier": "Just hit",
+      "score": 30
+    },
+    {
+      "institution": "Iuka Bancshares, Inc., Salem, Illinois and The Iuka State Bank, Salem, Illinois",
+      "regulator": "Federal Reserve",
+      "action": "Written Agreement",
+      "date": "2026-07-15",
+      "summary": "",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260730b.htm",
+      "source": "Federal Reserve CSV",
+      "themes": [
+        "Unclassified"
+      ],
+      "solutions": [],
+      "opener": "",
+      "tier": "Just hit",
+      "score": 30
+    },
+    {
+      "institution": "SouthPoint Bancshares, Inc., Birmingham, Alabama",
+      "regulator": "Federal Reserve",
+      "action": "Written Agreement",
+      "date": "2026-08-14",
+      "summary": "",
+      "url": "/newsevents/pressreleases/enforcement20260820b.htm",
+      "source": "Federal Reserve CSV",
+      "themes": [
+        "Unclassified"
+      ],
+      "solutions": [],
+      "opener": "",
+      "tier": "Just hit",
+      "score": 30
     }
   ]
 }
