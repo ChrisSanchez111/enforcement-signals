@@ -16,7 +16,7 @@ So the tracker ranks targets by fit, not just by severity:
 
 ## How it works
 
-1. **Collect.** Every Monday morning, a GitHub Action runs `src/collect.py`. It pulls the Federal Reserve's enforcement CSV and merges in curated actions from `data/manual_actions.json` (OCC, FDIC and FinCEN don't publish a clean machine-readable feed).
+1. **Collect.** Every Monday morning, a GitHub Action runs `src/collect.py`. It pulls the Federal Reserve's enforcement CSV, reads the OCC's monthly enforcement releases (the last 12 months), and merges in curated actions from `data/manual_actions.json` (FDIC, FinCEN, state regulators, and the fintech partners of sponsor banks). Curated entries win when the same action appears twice.
 2. **Fan out.** Each curated sponsor bank lists its publicly documented fintech partners, with a source link for every one. Each partner becomes its own target row, carrying the bank's order as its trigger. Partners reported only in older or third-party sources are marked "confirm before outreach" and scored lower.
 3. **Classify.** Each action is tagged with themes (BSA/AML, sanctions, third-party/fintech, fraud/consumer, safety and soundness). For Federal Reserve actions, the script opens the press release and the attached order PDF and tags it from the order text; results are cached in `data/fed_cache.json` so each order is read once.
 4. **Score.** Theme, action severity, penalty, recency and segment fit combine into a 0–100 score. Actions from the last 180 days are "Just hit"; older ones are "Remediating."
@@ -57,6 +57,7 @@ Standard library plus `pypdf` (for reading the Fed's attached orders): `pip inst
 ## Roadmap
 
 - Automated OCC and FDIC collection
+- Automated FDIC and NYDFS collection
 - Automated partner discovery (card issuer disclosures, fintech "banking services provided by" footers)
 - Fintech-direct sources: NYDFS and state money-transmitter actions, FinCEN MSB penalties
 - Hiring signals (BSA/AML analyst job postings)

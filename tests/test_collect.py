@@ -83,6 +83,40 @@ class CollectTests(unittest.TestCase):
     def test_megabank_detected(self):
         self.assertEqual(collect.segment_of({"institution": "Wells Fargo Bank, N.A.", "themes": []}), "Megabank")
 
+    def test_occ_release_parsing(self):
+        import occ
+        html = """<div><p>News Release 2026-59 | July 16, 2026</p>
+        <h1>OCC Announces Enforcement Actions for July 2026</h1>
+        <p>The OCC uses enforcement actions against banks to require the board of directors and management
+        to take timely actions. Actions taken against banks are:</p>
+        <ul><li>Cease and Desist Order against United Texas Bank, Dallas, Texas, for deficiencies in its Bank Secrecy
+        Act/anti-money laundering (BSA/AML) compliance program, which resulted in violations of law.
+        (Docket No. AA-ENF-2026-29)</li>
+        <li>Civil Money Penalty against Bank of America, National Association, Charlotte, North Carolina, for BSA
+        compliance program deficiencies. (Docket No. AA-ENF-2026-41)</li></ul>
+        <p>The OCC uses enforcement actions against institution-affiliated parties (IAPs) to deter violations.</p>
+        <ul><li>Order of Prohibition against Jane Roe, former teller at Example Bank, N.A., Town, Ohio, for embezzling.</li></ul>
+        <p>The termination actions are:</p>
+        <ul><li>Order Terminating the Formal Agreement with Old Bank, City, Texas, dated 2024.</li></ul></div>"""
+        acts = occ.parse_release(html, "https://x/nr.html")
+        self.assertEqual([a["institution"] for a in acts],
+                         ["United Texas Bank (Dallas, Texas)", "Bank of America N.A. (Charlotte, North Carolina)"])
+        self.assertEqual(acts[0]["date"], "2026-07-16")
+        self.assertEqual(acts[0]["url"], "https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf")
+        self.assertEqual(collect.classify(acts[0]), ["BSA/AML"])
+
+    def test_release_links(self):
+        import occ
+        idx = '<a href="/news-issuances/news-releases/2026/nr-occ-2026-93.html">OCC Announces Enforcement Actions for October 2026</a>' \
+              '<a href="/x/nr-occ-2026-90.html">Unrelated release</a>'
+        self.assertEqual(occ.release_links(idx, "https://www.occ.gov/topics/a.html"),
+                         ["https://www.occ.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html"])
+
+    def test_dedupe_prefers_curated(self):
+        cur = {"institution": "United Texas Bank, N.A. (Dallas, TX)", "regulator": "OCC", "date": "2026-06-12"}
+        auto = {"institution": "United Texas Bank (Dallas, Texas)", "regulator": "OCC", "date": "2026-07-16"}
+        self.assertEqual(collect.dedupe([cur, auto]), [cur])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -22,6 +22,9 @@ import urllib.request
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import occ  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 MANUAL = ROOT / "data" / "manual_actions.json"
 DATA_OUT = ROOT / "docs" / "data.json"
@@ -234,7 +237,9 @@ def segment_of(item: dict) -> str:
     name = item["institution"].lower()
     if any(m in name for m in MEGABANKS):
         return "Megabank"
-    if "Third-party / fintech" in item.get("themes", []):
+    text = (item.get("summary", "") + " " + item.get("action", "")).lower()
+    if "Third-party / fintech" in item.get("themes", []) or re.search(
+            r"virtual currency|crypto|digital asset|fintech|program manager|banking-as-a-service|baas", text):
         return "Sponsor bank"
     return "Community bank"   # most Fed holding-company actions
 
@@ -303,14 +308,24 @@ def fan_out(actions: list[dict]) -> list[dict]:
     return rows
 
 
+def norm_name(name: str) -> str:
+    name = name.lower().split("(")[0]
+    name = re.sub(r",.*$", "", name) if not name.startswith("bank of america") else "bank of america"
+    name = re.sub(r"\b(n\.a\.|national association|the|inc\.?)\b", " ", name)
+    return re.sub(r"[^a-z]", "", name)
+
+
 def dedupe(items: list[dict]) -> list[dict]:
-    seen, out = set(), []
+    """Drop repeats of the same institution and regulator within 120 days. Earlier items win,
+    so curated entries (listed first) beat automated ones."""
+    kept: list[dict] = []
     for it in items:
-        key = (re.sub(r"\W", "", it["institution"].lower()), it["regulator"], it["date"])
-        if key not in seen:
-            seen.add(key)
-            out.append(it)
-    return out
+        d = date.fromisoformat(it["date"])
+        dup = any(norm_name(k["institution"]) == norm_name(it["institution"]) and k["regulator"] == it["regulator"]
+                  and abs((date.fromisoformat(k["date"]) - d).days) <= 120 for k in kept)
+        if not dup:
+            kept.append(it)
+    return kept
 
 
 def item_key(it: dict) -> str:
@@ -368,8 +383,10 @@ def write_markdown(items: list[dict], month: str, statuses: dict) -> Path:
 def main() -> int:
     today = date.today()
     fed, fed_status = load_fed()
+    occ_items, occ_status = occ.load_occ(fetch)
     manual = load_manual()
     statuses = {"Federal Reserve CSV": f"{fed_status}, {len(fed)} open institution actions",
+                "OCC monthly releases": occ_status,
                 "Curated (OCC, FDIC, FinCEN, other)": f"{len(manual)} actions"}
     cutoff = today - timedelta(days=LOOKBACK_DAYS)
     fed = [i for i in fed if date.fromisoformat(i["date"]) >= cutoff]
@@ -378,7 +395,7 @@ def main() -> int:
     manual = [i for i in manual if live(i)]
     partners = fan_out(manual)
     statuses["Partners of banks under order"] = f"{len(partners)} fintech/crypto targets"
-    items = [i for i in dedupe(manual + partners + fed) if live(i)]
+    items = [i for i in dedupe(manual + partners + occ_items + fed) if live(i)]
     items = sorted((enrich(i, today) for i in items), key=lambda i: (-i["score"], i["date"]))
     mark_new(items, today)
     month = today.strftime("%Y-%m")
