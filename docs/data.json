@@ -1,0 +1,56 @@
+{
+  "generated": "2026-11-20",
+  "month": "2026-11",
+  "sources": {
+    "Federal Reserve CSV": "unavailable this run (URLError), 0 open institution actions",
+    "Curated (OCC, FDIC, FinCEN, other)": "2 actions"
+  },
+  "actions": [
+    {
+      "institution": "Bank of America, N.A.",
+      "regulator": "FinCEN",
+      "action": "Consent order imposing civil money penalty",
+      "date": "2026-10-27",
+      "summary": "Bank Secrecy Act violations; $1.2 billion civil money penalty with undertakings.",
+      "themes": [
+        "BSA/AML"
+      ],
+      "penalty_usd": 1200000000,
+      "url": "https://www.fincen.gov/system/files/2026-10/BoA-Consent-Order-Execution-Final.pdf",
+      "source": "Curated",
+      "solutions": [
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Customer Risk Rating",
+        "Case Management"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Just hit",
+      "score": 95
+    },
+    {
+      "institution": "Community Federal Savings Bank (Woodhaven, NY)",
+      "regulator": "OCC",
+      "action": "Consent order",
+      "date": "2026-04-24",
+      "summary": "BSA/AML program deficiencies tied to a payment processing line that grew faster than its controls; weak customer due diligence, suspicious activity monitoring, staffing and independent testing. Sponsor bank for Wise and Crypto.com. Requires an end-to-end BSA/AML program review and a third-party risk assessment.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "url": "https://www.bankingdive.com/news/occ-community-federal-savings-bank-new-york-aml-bsa-sar-deficiencies-fintech-partner/821272/",
+      "source": "Curated",
+      "solutions": [
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Customer Risk Rating",
+        "Case Management",
+        "Sponsor Banking",
+        "Global KYB"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Remediating",
+      "score": 65
+    }
+  ]
+}

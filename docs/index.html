@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enforcement Signals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f4f5f8,#0b1020);--card:light-dark(#fff,#141a2e);--ink:light-dark(#0d1220,#eef0f7);
+--mute:light-dark(#5a6176,#a3aac2);--line:light-dark(#e1e4ec,#262f4b);--navy:#0b1438;--accent:#e4572e;--teal:#1f8a78}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Inter Tight",system-ui,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:0 max(4vw,16px)}
+header{background:var(--navy);color:#fff;padding:40px 0 30px}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+header .mono{color:#9fb0ff}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.05;margin:10px 0 12px;font-weight:700;letter-spacing:-.02em}
+header p{color:#cfd6f5;max-width:64ch;margin:0}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 0}
+.stat{background:rgba(255,255,255,.08);border-radius:10px;padding:10px 16px}
+.stat b{display:block;font-size:24px}
+.stat span{font-size:14px;color:#cfd6f5}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 14px}
+.bar button{font:600 15px "Inter Tight",sans-serif;min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.bar button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.list{display:grid;gap:12px;margin-bottom:28px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px}
+.score{width:64px;height:64px;border-radius:12px;display:grid;place-items:center;font:700 24px "Inter Tight";color:#fff;background:var(--c)}
+.row h2{margin:0 0 4px;font-size:19px;line-height:1.25}
+.row h2 a{color:inherit}
+.meta{color:var(--mute);font-size:14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tag{font-size:13px;padding:3px 9px;border-radius:999px;background:var(--bg);border:1px solid var(--line)}
+.tag.t{border-color:var(--teal);color:var(--teal)}
+.sum{margin:6px 0;font-size:15px}
+.op{border-left:3px solid var(--accent);padding-left:10px;font-size:15px;margin-top:8px}
+footer{color:var(--mute);font-size:14px;border-top:1px solid var(--line);padding:18px 0 40px}
+@media(max-width:520px){.row{grid-template-columns:minmax(0,1fr)}.score{width:auto;height:40px;justify-self:start;padding:0 14px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="mono">Independent research project · updated monthly</div>
+ <h1>Enforcement Signals</h1>
+ <p>Public bank enforcement actions, sorted by how strongly they signal a need for fraud, AML and sanctions tooling. Each one shows the themes behind the action and a suggested opening question.</p>
+ <div class="stats" id="stats"></div>
+</div></header>
+<main class="wrap">
+ <div class="bar" id="bar" aria-label="Filter by theme"></div>
+ <div class="list" id="list"><p class="meta">Loading…</p></div>
+ <footer id="foot">Sources: Federal Reserve enforcement CSV (automated) and curated OCC, FDIC and FinCEN actions. Public records only. Not affiliated with any regulator or vendor; nothing here is legal or compliance advice.</footer>
+</main>
+<script>
+{
+const esc=s=>String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const col=s=>s>=80?"#c0392b":s>=60?"#e4572e":s>=40?"#c98a12":"#6b7390";
+let data=[],cur="All";
+const bar=document.getElementById("bar"),list=document.getElementById("list");
+function render(){
+ const rows=data.filter(a=>cur==="All"||a.themes.includes(cur));
+ for(const b of bar.querySelectorAll("button"))b.setAttribute("aria-pressed",b.dataset.t===cur);
+ list.innerHTML=rows.length?rows.map(a=>`<article class="row"><div class="score" style="--c:${col(a.score)}">${a.score}</div><div>
+  <h2>${a.url?`<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.institution)}</a>`:esc(a.institution)}</h2>
+  <div class="meta">${esc(a.regulator)} · ${esc(a.action)} · ${esc(a.date)} · ${esc(a.tier)}</div>
+  <div class="tags">${a.themes.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}${a.solutions.slice(0,4).map(s=>`<span class="tag t">${esc(s)}</span>`).join("")}</div>
+  ${a.summary?`<p class="sum">${esc(a.summary)}</p>`:""}
+  ${a.opener?`<div class="op">${esc(a.opener)}</div>`:""}
+ </div></article>`).join(""):'<p class="meta">No actions for this theme.</p>';
+}
+fetch("data.json").then(r=>r.json()).then(d=>{
+ data=d.actions||[];
+ const themes=["All",...new Set(data.flatMap(a=>a.themes))];
+ bar.innerHTML=themes.map(t=>`<button data-t="${esc(t)}">${esc(t)}</button>`).join("");
+ bar.addEventListener("click",e=>{const b=e.target.closest("button");if(b){cur=b.dataset.t;render()}});
+ const hot=data.filter(a=>a.score>=60).length;
+ document.getElementById("stats").innerHTML=[[data.length,"actions tracked"],[hot,"strong signals"],[d.generated,"last run"]]
+  .map(([v,l])=>`<div class="stat"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
+ render();
+}).catch(()=>{list.innerHTML='<p class="meta">No data yet. The first monthly run will fill this in.</p>'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+name: Monthly target list
+
+on:
+  schedule:
+    # 6th of every month, 13:17 UTC: after the OCC and FDIC monthly releases are usually out
+    - cron: "17 13 6 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Collect enforcement actions
+        run: python src/collect.py
+      - name: Commit results
+        run: |
+          git config user.name "enforcement-signals bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data.json targets/
+          if git diff --cached --quiet; then
+            echo "No changes this run."
+          else
+            git commit -m "Monthly target list $(date -u +%Y-%m)"
+            git push
+          fi

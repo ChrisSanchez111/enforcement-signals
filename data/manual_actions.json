@@ -1,0 +1,21 @@
+[
+  {
+    "institution": "Community Federal Savings Bank (Woodhaven, NY)",
+    "regulator": "OCC",
+    "action": "Consent order",
+    "date": "2026-04-24",
+    "summary": "BSA/AML program deficiencies tied to a payment processing line that grew faster than its controls; weak customer due diligence, suspicious activity monitoring, staffing and independent testing. Sponsor bank for Wise and Crypto.com. Requires an end-to-end BSA/AML program review and a third-party risk assessment.",
+    "themes": ["BSA/AML", "Third-party / fintech"],
+    "url": "https://www.bankingdive.com/news/occ-community-federal-savings-bank-new-york-aml-bsa-sar-deficiencies-fintech-partner/821272/"
+  },
+  {
+    "institution": "Bank of America, N.A.",
+    "regulator": "FinCEN",
+    "action": "Consent order imposing civil money penalty",
+    "date": "2026-10-27",
+    "summary": "Bank Secrecy Act violations; $1.2 billion civil money penalty with undertakings.",
+    "themes": ["BSA/AML"],
+    "penalty_usd": 1200000000,
+    "url": "https://www.fincen.gov/system/files/2026-10/BoA-Consent-Order-Execution-Final.pdf"
+  }
+]
