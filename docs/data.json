@@ -3,16 +3,586 @@
   "month": "2026-11",
   "sources": {
     "Federal Reserve CSV": "ok (https://www.federalreserve.gov/supervisionreg/files/enforcementactions.csv), 334 open institution actions",
-    "Curated (OCC, FDIC, FinCEN, other)": "4 actions",
-    "Fed order tagging": "read 3 new orders, 2 unreadable, 3 cached"
+    "Curated (OCC, FDIC, FinCEN, other)": "9 actions",
+    "Fed order tagging": "read 3 new orders, 2 unreadable, 3 cached",
+    "Partners of banks under order": "12 fintech/crypto targets"
   },
   "actions": [
+    {
+      "institution": "United Texas Bank, N.A. (Dallas, TX)",
+      "regulator": "OCC",
+      "action": "Cease and desist order",
+      "date": "2026-06-12",
+      "segment": "Sponsor bank",
+      "summary": "BSA/AML compliance program deficiencies; order entered as a condition of converting to a national charter, carrying forward the corrective actions from a 2024 Federal Reserve order. A crypto-focused bank that reports more than $120B a year in crypto transaction volume. Released July 16, 2026.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "url": "https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf",
+      "partners": [
+        {
+          "name": "Circle (USDC)",
+          "segment": "Crypto",
+          "note": "Reported in 2024 as a past United Texas Bank relationship; confirm it is current before outreach.",
+          "source": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management"
+        },
+        {
+          "name": "Stellar Development Foundation",
+          "segment": "Crypto",
+          "note": "Reported in 2024 as a past United Texas Bank relationship; confirm it is current before outreach.",
+          "source": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management"
+        }
+      ],
+      "source": "Curated",
+      "icp": true,
+      "solutions": [
+        "Sponsor Banking",
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Global KYB"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Just hit",
+      "score": 85,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Cash App (Block)",
+      "regulator": "FDIC",
+      "action": "Partner of Sutton Bank (Attica, OH) (Consent order)",
+      "date": "2024-02-01",
+      "summary": "Runs on Sutton Bank (Attica, OH), which is under this order. Sutton is the issuing bank for Cash App debit cards.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Sutton Bank (Attica, OH)",
+      "url": "https://joingerald.com/learn/banking--payments/sutton-bank-explained",
+      "opener": "Sutton Bank is under a FDIC consent order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Cash App (Block) getting more compliance questions from Sutton Bank yet?",
+      "active_order": true,
+      "verify": false,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 80,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Thredd",
+      "regulator": "FDIC",
+      "action": "Partner of Sutton Bank (Attica, OH) (Consent order)",
+      "date": "2024-02-01",
+      "summary": "Runs on Sutton Bank (Attica, OH), which is under this order. Partnered with Sutton in June 2026 to launch U.S. card programs for global brands.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Sutton Bank (Attica, OH)",
+      "url": "https://www.businesswire.com/news/home/20260617515344/en/",
+      "opener": "Sutton Bank is under a FDIC consent order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Thredd getting more compliance questions from Sutton Bank yet?",
+      "active_order": true,
+      "verify": false,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 80,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Affirm",
+      "regulator": "Federal Reserve",
+      "action": "Partner of Evolve Bank & Trust (West Memphis, AR) (Cease and desist order)",
+      "date": "2024-06-14",
+      "summary": "Runs on Evolve Bank & Trust (West Memphis, AR), which is under this order. Evolve has been the issuing bank for the Affirm Card since 2021.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Evolve Bank & Trust (West Memphis, AR)",
+      "url": "https://americanbanker.com/payments/news/affirm-adds-stride-bank-as-baas-provider-for-card-issuance",
+      "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Affirm getting more compliance questions from Evolve Bank & Trust yet?",
+      "active_order": true,
+      "verify": false,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 80,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Airwallex",
+      "regulator": "Federal Reserve",
+      "action": "Partner of Evolve Bank & Trust (West Memphis, AR) (Cease and desist order)",
+      "date": "2024-06-14",
+      "summary": "Runs on Evolve Bank & Trust (West Memphis, AR), which is under this order. Listed on Evolve's partner page.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Evolve Bank & Trust (West Memphis, AR)",
+      "url": "https://www.getevolved.com/?p=79",
+      "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Airwallex getting more compliance questions from Evolve Bank & Trust yet?",
+      "active_order": true,
+      "verify": false,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 80,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Branch",
+      "regulator": "Federal Reserve",
+      "action": "Partner of Evolve Bank & Trust (West Memphis, AR) (Cease and desist order)",
+      "date": "2024-06-14",
+      "summary": "Runs on Evolve Bank & Trust (West Memphis, AR), which is under this order. Listed on Evolve's partner page.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Evolve Bank & Trust (West Memphis, AR)",
+      "url": "https://www.getevolved.com/?p=79",
+      "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Branch getting more compliance questions from Evolve Bank & Trust yet?",
+      "active_order": true,
+      "verify": false,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 80,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Earnin",
+      "regulator": "Federal Reserve",
+      "action": "Partner of Evolve Bank & Trust (West Memphis, AR) (Cease and desist order)",
+      "date": "2024-06-14",
+      "summary": "Runs on Evolve Bank & Trust (West Memphis, AR), which is under this order. Listed on Evolve's partner page.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Evolve Bank & Trust (West Memphis, AR)",
+      "url": "https://www.getevolved.com/?p=79",
+      "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Earnin getting more compliance questions from Evolve Bank & Trust yet?",
+      "active_order": true,
+      "verify": false,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 80,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Wise",
+      "regulator": "OCC",
+      "action": "Partner of Community Federal Savings Bank (Woodhaven, NY) (Consent order)",
+      "date": "2026-04-24",
+      "summary": "Runs on Community Federal Savings Bank (Woodhaven, NY), which is under this order. CFSB is the sponsor bank for Wise's U.S. dollar accounts.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Community Federal Savings Bank (Woodhaven, NY)",
+      "url": "https://connect.cefpro.com/article/view/community-federal-faces-occ-crackdown-over-aml-failures",
+      "opener": "Community Federal Savings Bank is under a OCC consent order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Wise getting more compliance questions from Community Federal Savings Bank yet?",
+      "active_order": false,
+      "verify": false,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 80,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Crypto.com",
+      "regulator": "OCC",
+      "action": "Partner of Community Federal Savings Bank (Woodhaven, NY) (Consent order)",
+      "date": "2026-04-24",
+      "summary": "Runs on Community Federal Savings Bank (Woodhaven, NY), which is under this order. CFSB is the sponsor bank for Crypto.com's prepaid card program.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "segment": "Crypto",
+      "tier": "Partner of a bank under order",
+      "via": "Community Federal Savings Bank (Woodhaven, NY)",
+      "url": "https://connect.cefpro.com/article/view/community-federal-faces-occ-crackdown-over-aml-failures",
+      "opener": "Community Federal Savings Bank is under a OCC consent order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Crypto.com getting more compliance questions from Community Federal Savings Bank yet?",
+      "active_order": false,
+      "verify": false,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 80,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Sutton Bank (Attica, OH)",
+      "regulator": "FDIC",
+      "action": "Consent order",
+      "date": "2024-02-01",
+      "active_order": true,
+      "segment": "Sponsor bank",
+      "summary": "FDIC consent order covering BSA/AML, transaction lookbacks and oversight of BaaS partners. Listed as still under public enforcement remediation in August 2026. Issuing bank behind 150+ debit and prepaid programs.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "url": "https://paymentrailsreview.com/read/banking-as-a-service-consent-orders/",
+      "partners": [
+        {
+          "name": "Cash App (Block)",
+          "segment": "Fintech / payments",
+          "note": "Sutton is the issuing bank for Cash App debit cards.",
+          "source": "https://joingerald.com/learn/banking--payments/sutton-bank-explained"
+        },
+        {
+          "name": "Thredd",
+          "segment": "Fintech / payments",
+          "note": "Partnered with Sutton in June 2026 to launch U.S. card programs for global brands.",
+          "source": "https://www.businesswire.com/news/home/20260617515344/en/"
+        }
+      ],
+      "source": "Curated",
+      "icp": true,
+      "solutions": [
+        "Sponsor Banking",
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Global KYB"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Remediating",
+      "score": 75,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Piermont Bank (New York, NY)",
+      "regulator": "FDIC",
+      "action": "Consent order",
+      "date": "2024-02-26",
+      "active_order": true,
+      "segment": "Sponsor bank",
+      "summary": "FDIC consent order covering BSA/AML, transaction lookbacks and third-party (BaaS) partner oversight. Listed as still under public enforcement remediation in August 2026.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "url": "https://paymentrailsreview.com/read/banking-as-a-service-consent-orders/",
+      "source": "Curated",
+      "icp": true,
+      "solutions": [
+        "Sponsor Banking",
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Global KYB"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Remediating",
+      "score": 75,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Evolve Bank & Trust (West Memphis, AR)",
+      "regulator": "Federal Reserve",
+      "action": "Cease and desist order",
+      "date": "2024-06-14",
+      "active_order": true,
+      "segment": "Sponsor bank",
+      "summary": "Federal Reserve cease and desist over weak AML/BSA, OFAC violations and poor control of fintech partnerships; Synapse's partner bank. Listed as still under public enforcement remediation in August 2026. In April 2026 Coastal Community Bank signed a term sheet to take over certain Evolve programs.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech"
+      ],
+      "url": "https://wiki.private.law/en/baas-sponsor-bank",
+      "partners": [
+        {
+          "name": "Affirm",
+          "segment": "Fintech / payments",
+          "note": "Evolve has been the issuing bank for the Affirm Card since 2021.",
+          "source": "https://americanbanker.com/payments/news/affirm-adds-stride-bank-as-baas-provider-for-card-issuance"
+        },
+        {
+          "name": "Airwallex",
+          "segment": "Fintech / payments",
+          "note": "Listed on Evolve's partner page.",
+          "source": "https://www.getevolved.com/?p=79"
+        },
+        {
+          "name": "Branch",
+          "segment": "Fintech / payments",
+          "note": "Listed on Evolve's partner page.",
+          "source": "https://www.getevolved.com/?p=79"
+        },
+        {
+          "name": "Earnin",
+          "segment": "Fintech / payments",
+          "note": "Listed on Evolve's partner page.",
+          "source": "https://www.getevolved.com/?p=79"
+        },
+        {
+          "name": "Melio",
+          "segment": "Fintech / payments",
+          "note": "Listed as an Evolve partner by a third-party directory; confirm before outreach.",
+          "source": "https://banq.ai/provider/evolve-bank-and-trust"
+        },
+        {
+          "name": "Step",
+          "segment": "Fintech / payments",
+          "note": "Listed as an Evolve partner by a third-party directory; confirm before outreach.",
+          "source": "https://banq.ai/provider/evolve-bank-and-trust"
+        }
+      ],
+      "source": "Curated",
+      "icp": true,
+      "solutions": [
+        "Sponsor Banking",
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Global KYB"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Remediating",
+      "score": 75,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Community Federal Savings Bank (Woodhaven, NY)",
+      "regulator": "OCC",
+      "action": "Consent order",
+      "date": "2026-04-24",
+      "segment": "Sponsor bank",
+      "summary": "BSA/AML program deficiencies tied to a payment processing line that grew faster than its controls; weak customer due diligence, suspicious activity monitoring, staffing and independent testing. Requires an end-to-end BSA/AML program review and a third-party risk assessment.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "url": "https://www.bankingdive.com/news/occ-community-federal-savings-bank-new-york-aml-bsa-sar-deficiencies-fintech-partner/821272/",
+      "partners": [
+        {
+          "name": "Wise",
+          "segment": "Fintech / payments",
+          "note": "CFSB is the sponsor bank for Wise's U.S. dollar accounts.",
+          "source": "https://connect.cefpro.com/article/view/community-federal-faces-occ-crackdown-over-aml-failures"
+        },
+        {
+          "name": "Crypto.com",
+          "segment": "Crypto",
+          "note": "CFSB is the sponsor bank for Crypto.com's prepaid card program.",
+          "source": "https://connect.cefpro.com/article/view/community-federal-faces-occ-crackdown-over-aml-failures"
+        }
+      ],
+      "source": "Curated",
+      "icp": true,
+      "solutions": [
+        "Sponsor Banking",
+        "Transaction Monitoring",
+        "Agentic AML Ops",
+        "Global KYB"
+      ],
+      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
+      "tier": "Remediating",
+      "score": 75,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Circle (USDC)",
+      "regulator": "OCC",
+      "action": "Partner of United Texas Bank, N.A. (Dallas, TX) (Cease and desist order)",
+      "date": "2026-06-12",
+      "summary": "Runs on United Texas Bank, N.A. (Dallas, TX), which is under this order. Reported in 2024 as a past United Texas Bank relationship; confirm it is current before outreach.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "segment": "Crypto",
+      "tier": "Partner of a bank under order",
+      "via": "United Texas Bank, N.A. (Dallas, TX)",
+      "url": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management",
+      "opener": "United Texas Bank, N.A. is under a OCC cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Circle (USDC) getting more compliance questions from United Texas Bank, N.A. yet?",
+      "active_order": false,
+      "verify": true,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 75,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Stellar Development Foundation",
+      "regulator": "OCC",
+      "action": "Partner of United Texas Bank, N.A. (Dallas, TX) (Cease and desist order)",
+      "date": "2026-06-12",
+      "summary": "Runs on United Texas Bank, N.A. (Dallas, TX), which is under this order. Reported in 2024 as a past United Texas Bank relationship; confirm it is current before outreach.",
+      "themes": [
+        "BSA/AML",
+        "Third-party / fintech"
+      ],
+      "segment": "Crypto",
+      "tier": "Partner of a bank under order",
+      "via": "United Texas Bank, N.A. (Dallas, TX)",
+      "url": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management",
+      "opener": "United Texas Bank, N.A. is under a OCC cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Stellar Development Foundation getting more compliance questions from United Texas Bank, N.A. yet?",
+      "active_order": false,
+      "verify": true,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 75,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Melio",
+      "regulator": "Federal Reserve",
+      "action": "Partner of Evolve Bank & Trust (West Memphis, AR) (Cease and desist order)",
+      "date": "2024-06-14",
+      "summary": "Runs on Evolve Bank & Trust (West Memphis, AR), which is under this order. Listed as an Evolve partner by a third-party directory; confirm before outreach.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Evolve Bank & Trust (West Memphis, AR)",
+      "url": "https://banq.ai/provider/evolve-bank-and-trust",
+      "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Melio getting more compliance questions from Evolve Bank & Trust yet?",
+      "active_order": true,
+      "verify": true,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 65,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Step",
+      "regulator": "Federal Reserve",
+      "action": "Partner of Evolve Bank & Trust (West Memphis, AR) (Cease and desist order)",
+      "date": "2024-06-14",
+      "summary": "Runs on Evolve Bank & Trust (West Memphis, AR), which is under this order. Listed as an Evolve partner by a third-party directory; confirm before outreach.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Partner of a bank under order",
+      "via": "Evolve Bank & Trust (West Memphis, AR)",
+      "url": "https://banq.ai/provider/evolve-bank-and-trust",
+      "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Step getting more compliance questions from Evolve Bank & Trust yet?",
+      "active_order": true,
+      "verify": true,
+      "source": "Partner of curated action",
+      "icp": true,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Global KYC",
+        "Agentic AML Ops"
+      ],
+      "score": 65,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
     {
       "institution": "American Express National Bank (Sandy, UT)",
       "regulator": "OCC",
       "action": "Cease and desist order and civil money penalty ($350M)",
       "date": "2026-10-08",
-      "summary": "BSA program deficiencies: weak risk assessment of the card business, ineffective customer due diligence and risk rating, inconsistent customer identification, untimely or missed SARs, weak independent testing and staffing. OCC tied the gaps to roughly $13B in suspected trade-based money laundering (2014\u20132025). A parallel Federal Reserve consent order adds transaction monitoring, fraud-referral, third-party risk and OFAC remediation.",
+      "segment": "Megabank",
+      "summary": "BSA program deficiencies: weak risk assessment of the card business, ineffective customer due diligence and risk rating, untimely or missed SARs. OCC tied the gaps to roughly $13B in suspected trade-based money laundering. A parallel Federal Reserve order adds transaction monitoring, fraud-referral, third-party risk and OFAC remediation. Best used as a peer story for mid-size card issuers.",
       "themes": [
         "BSA/AML",
         "Sanctions",
@@ -22,6 +592,7 @@
       "penalty_usd": 350000000,
       "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html",
       "source": "Curated",
+      "icp": false,
       "solutions": [
         "Transaction Monitoring",
         "Agentic AML Ops",
@@ -36,13 +607,16 @@
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Just hit",
-      "score": 95
+      "score": 65,
+      "first_seen": "2026-11-20",
+      "new": true
     },
     {
       "institution": "Bank of America, N.A.",
       "regulator": "FinCEN",
       "action": "Consent order imposing civil money penalty ($1.2B)",
       "date": "2026-10-27",
+      "segment": "Megabank",
       "summary": "Bank Secrecy Act violations; $1.2B civil money penalty with undertakings. Date shown is when the order was reported.",
       "themes": [
         "BSA/AML"
@@ -50,6 +624,7 @@
       "penalty_usd": 1200000000,
       "url": "https://www.fincen.gov/system/files/2026-10/BoA-Consent-Order-Execution-Final.pdf",
       "source": "Curated",
+      "icp": false,
       "solutions": [
         "Transaction Monitoring",
         "Agentic AML Ops",
@@ -58,20 +633,24 @@
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Just hit",
-      "score": 95
+      "score": 65,
+      "first_seen": "2026-11-20",
+      "new": true
     },
     {
       "institution": "Bank of America, N.A. (Charlotte, NC)",
       "regulator": "OCC",
       "action": "Civil money penalty ($750M)",
       "date": "2026-10-22",
-      "summary": "BSA compliance program deficiencies, failure to timely file suspicious activity reports, and wires sent with inaccurate originator information. Date shown is the OCC release date.",
+      "segment": "Megabank",
+      "summary": "BSA compliance program deficiencies, late suspicious activity reports, and wires sent with inaccurate originator information. Date shown is the OCC release date.",
       "themes": [
         "BSA/AML"
       ],
       "penalty_usd": 750000000,
       "url": "https://occ.treas.gov/news-issuances/news-releases/2026/nr-occ-2026-93.html",
       "source": "Curated",
+      "icp": false,
       "solutions": [
         "Transaction Monitoring",
         "Agentic AML Ops",
@@ -80,7 +659,9 @@
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Just hit",
-      "score": 90
+      "score": 60,
+      "first_seen": "2026-11-20",
+      "new": true
     },
     {
       "institution": "American Express Company, New York, New York; American Express Travel Related Services Company, Inc., New York, New York",
@@ -92,22 +673,47 @@
       "source": "Federal Reserve CSV",
       "themes": [
         "BSA/AML",
-        "Sanctions",
-        "Fraud / consumer"
+        "Sanctions"
       ],
+      "segment": "Megabank",
+      "icp": false,
       "solutions": [
         "Transaction Monitoring",
         "Agentic AML Ops",
         "Customer Risk Rating",
         "Case Management",
-        "Sanctions Screening",
-        "Payment Fraud",
-        "Account Takeovers",
-        "Device & Behavior"
+        "Sanctions Screening"
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Just hit",
-      "score": 85
+      "score": 55,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Lineage Bank (Franklin, TN)",
+      "regulator": "FDIC",
+      "action": "Consent order",
+      "date": "2026-06-24",
+      "segment": "Community bank",
+      "summary": "Second FDIC consent order; former Synapse partner bank. Requires a three-year business plan, earnings and problem-credit plans. The bank has rebranded as Harpeth and is pivoting back to community banking, so it is exiting fintech rather than buying for it.",
+      "themes": [
+        "Third-party / fintech",
+        "Safety & soundness"
+      ],
+      "url": "https://www.pymnts.com/?p=4027596",
+      "source": "Curated",
+      "icp": false,
+      "solutions": [
+        "Sponsor Banking",
+        "Global KYB",
+        "Transaction Monitoring"
+      ],
+      "opener": "Regulators keep saying controls must keep pace with fintech growth. When you add a program, does your alert queue grow faster than your team?",
+      "tier": "Just hit",
+      "score": 50,
+      "first_seen": "2026-11-20",
+      "new": true
     },
     {
       "institution": "Iuka Bancshares, Inc., Salem, Illinois and The Iuka State Bank, Salem, Illinois",
@@ -118,65 +724,21 @@
       "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260730b.htm",
       "source": "Federal Reserve CSV",
       "themes": [
-        "BSA/AML",
-        "Fraud / consumer"
+        "BSA/AML"
       ],
+      "segment": "Community bank",
+      "icp": false,
       "solutions": [
         "Transaction Monitoring",
         "Agentic AML Ops",
         "Customer Risk Rating",
-        "Case Management",
-        "Payment Fraud",
-        "Account Takeovers",
-        "Device & Behavior"
+        "Case Management"
       ],
       "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
       "tier": "Just hit",
-      "score": 70
-    },
-    {
-      "institution": "Community Federal Savings Bank (Woodhaven, NY)",
-      "regulator": "OCC",
-      "action": "Consent order",
-      "date": "2026-04-24",
-      "summary": "BSA/AML program deficiencies tied to a payment processing line that grew faster than its controls; weak customer due diligence, suspicious activity monitoring, staffing and independent testing. Sponsor bank for Wise and Crypto.com. Requires an end-to-end BSA/AML program review and a third-party risk assessment.",
-      "themes": [
-        "BSA/AML",
-        "Third-party / fintech"
-      ],
-      "url": "https://www.bankingdive.com/news/occ-community-federal-savings-bank-new-york-aml-bsa-sar-deficiencies-fintech-partner/821272/",
-      "source": "Curated",
-      "solutions": [
-        "Transaction Monitoring",
-        "Agentic AML Ops",
-        "Customer Risk Rating",
-        "Case Management",
-        "Sponsor Banking",
-        "Global KYB"
-      ],
-      "opener": "Orders like this usually come with an end-to-end program review on a deadline. How are you handling first-pass alert review while that's underway?",
-      "tier": "Remediating",
-      "score": 65
-    },
-    {
-      "institution": "TS Banking Group, Inc., Treynor, Iowa and TS Contrarian Bancshares, Inc., Treynor, Iowa",
-      "regulator": "Federal Reserve",
-      "action": "Written Agreement",
-      "date": "2026-07-06",
-      "summary": "Tagged automatically from the Federal Reserve order text.",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260709a.htm",
-      "source": "Federal Reserve CSV",
-      "themes": [
-        "Fraud / consumer"
-      ],
-      "solutions": [
-        "Payment Fraud",
-        "Account Takeovers",
-        "Device & Behavior"
-      ],
-      "opener": "Findings like this tend to put fraud losses and customer friction on the board agenda at the same time. Which one is getting more pressure right now?",
-      "tier": "Just hit",
-      "score": 50
+      "score": 50,
+      "first_seen": "2026-11-20",
+      "new": true
     },
     {
       "institution": "Ontario Bancorporation, Inc., Ontario, Wisconsin",
@@ -189,10 +751,34 @@
       "themes": [
         "Unclassified"
       ],
+      "segment": "Community bank",
+      "icp": false,
       "solutions": [],
       "opener": "",
       "tier": "Just hit",
-      "score": 40
+      "score": 20,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "TS Banking Group, Inc., Treynor, Iowa and TS Contrarian Bancshares, Inc., Treynor, Iowa",
+      "regulator": "Federal Reserve",
+      "action": "Written Agreement",
+      "date": "2026-07-06",
+      "summary": "Tagged automatically from the Federal Reserve order text.",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260709a.htm",
+      "source": "Federal Reserve CSV",
+      "themes": [
+        "Safety & soundness"
+      ],
+      "segment": "Community bank",
+      "icp": false,
+      "solutions": [],
+      "opener": "",
+      "tier": "Just hit",
+      "score": 15,
+      "first_seen": "2026-11-20",
+      "new": true
     },
     {
       "institution": "SouthPoint Bancshares, Inc., Birmingham, Alabama",
@@ -205,10 +791,14 @@
       "themes": [
         "Unclassified"
       ],
+      "segment": "Community bank",
+      "icp": false,
       "solutions": [],
       "opener": "",
       "tier": "Just hit",
-      "score": 30
+      "score": 10,
+      "first_seen": "2026-11-20",
+      "new": true
     }
   ]
 }
