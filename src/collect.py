@@ -226,8 +226,10 @@ SEGMENT_FIT = {"Fintech / payments": 15, "Crypto": 15, "Marketplace / ecommerce"
                "Regional bank": 0, "Community bank": -20, "Megabank": -30}
 UNVERIFIED_PENALTY = 15   # partner link reported in older or third-party sources; confirm before outreach
 
-PARTNER_SOLUTIONS = ["Transaction Monitoring", "Global KYB", "Global KYC", "Agentic AML Ops"]
-SPONSOR_SOLUTIONS = ["Sponsor Banking", "Transaction Monitoring", "Agentic AML Ops", "Global KYB"]
+# Fintechs feel compliance pressure from their bank, but they buy fraud tools too: fraud and growth go together.
+PARTNER_SOLUTIONS = ["Transaction Monitoring", "Global KYB", "Device & Behavior", "Payment Fraud", "Global KYC"]
+# Sanctions automation is the strongest public proof point with sponsor banks.
+SPONSOR_SOLUTIONS = ["Sanctions Screening", "Sponsor Banking", "Transaction Monitoring", "Agentic AML Ops"]
 ICP_SEGMENTS = {"Fintech / payments", "Crypto", "Marketplace / ecommerce", "Sponsor bank"}
 
 
@@ -295,6 +297,9 @@ def enrich(item: dict, today: date) -> dict:
 
 PARTNER_OPENER = ("{bank} is under a {regulator} {action_lc}. Sponsor banks under orders push their partners for "
                   "stronger monitoring and KYC evidence. Is {partner} getting more compliance questions from {bank} yet?")
+# Growth angle: tighter controls usually mean more good customers declined.
+PARTNER_GROWTH_OPENER = ("When a sponsor bank tightens up, fintechs often answer by declining more good customers at "
+                         "onboarding. How is {partner} keeping approval rates up while {bank} asks for more evidence?")
 
 
 def fan_out(actions: list[dict]) -> list[dict]:
@@ -316,6 +321,7 @@ def fan_out(actions: list[dict]) -> list[dict]:
                 "opener": PARTNER_OPENER.format(bank=a["institution"].split(" (")[0], regulator=a["regulator"],
                                                 action_lc=a["action"].lower().split(" (")[0],
                                                 partner=p["name"]),
+                "alt_opener": PARTNER_GROWTH_OPENER.format(bank=a["institution"].split(" (")[0], partner=p["name"]),
                 "active_order": a.get("active_order", False),
                 "verify": bool(re.search(r"confirm", p.get("note", ""), re.I)),
                 "source": "Partner of curated action",

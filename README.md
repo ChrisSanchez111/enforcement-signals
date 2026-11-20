@@ -23,6 +23,31 @@ So the tracker ranks targets by fit, not just by severity:
 5. **Map.** Each theme maps to the solution areas to lead with, plus a suggested opening question.
 6. **Publish.** Actions first seen in the last week are flagged as new. Results are committed to `docs/data.json` (the dashboard) and `targets/YYYY-MM.md` (the monthly list).
 
+## How it scores, and why
+
+Each target gets a 0–100 score by adding up five parts. The point is ranking: who to call first, and why now.
+
+| Part | Points | Why |
+|---|---|---|
+| **What the order is about** (highest theme) | BSA/AML 40 · Sanctions 35 · Third-party/fintech 35 · Fraud/consumer 20 · Safety & soundness 5 | AML, sanctions and fintech-oversight failures map directly to products a fraud/AML platform sells. Capital and management problems mostly don't. |
+| **How serious the action is** | Consent order or cease-and-desist +20 · Written/formal agreement or civil money penalty +15 · Prompt corrective action +10 | Formal orders come with deadlines and required program reviews, which is when tools get bought. |
+| **Money penalty attached** | +10 | A fine puts the problem in front of the board. |
+| **How recent** | Last 90 days +25 · last 180 days +15 · older +5 | Earlier outreach lands while the remediation plan is being written. Older orders still count: remediation runs 6–18 months. |
+| **Fit with the buyer** (segment) | Fintech, crypto or marketplace +15 · Sponsor bank +10 · Regional bank 0 · Community bank −20 · Megabank −30 | Fintechs, crypto firms and sponsor banks buy fraud/AML platforms. Community banks are often capital-constrained; megabanks build in-house or have entrenched vendors. |
+
+Two adjustments: partner links reported only in older or third-party sources lose 15 points ("confirm before outreach"), and existing Sardine customers are scored 0 and listed as references.
+
+**Fintech partners** of a bank under an order inherit the bank's themes, plus "Third-party/fintech." They lead with transaction monitoring and KYB (what their bank will ask for) and with device-and-behavior and payment-fraud tools, because tighter controls usually mean more good customers declined. Each fintech gets two openers: one on compliance pressure, one on approval rates. **Sponsor banks** lead with sanctions screening, where AI automation has the clearest public proof.
+
+## What it can't do yet
+
+- **Fintech partners are researched by hand.** Every link has a source, but the tool doesn't discover new partners on its own. A new sponsor-bank order shows up automatically; its fintechs have to be added to `data/manual_actions.json`.
+- **Only two regulators are automated.** The Federal Reserve (CSV feed) and the OCC (monthly releases). FDIC, FinCEN and state regulators like NYDFS are curated by hand.
+- **The OCC is a trickle.** Many months have no bank actions at all, and most actions are capital or management problems at community banks.
+- **Federal Reserve tagging is keyword-based.** It reads the order text and needs two keyword hits per theme, so it can mis-tag an order. Some Fed orders can't be read and stay "Unclassified."
+- **Scores are judgment calls, not a trained model.** The weights encode one view of who buys and when. They're easy to change, and worth arguing about.
+- **Name matching is simple.** Duplicate detection and the customer flag match on normalized names, so similarly named institutions can collide.
+
 ## Existing customers
 
 `data/known_customers.json` lists companies publicly named as Sardine customers (from its customers page and job posting). Any target that matches is flagged as an existing customer, scored 0 and moved out of the best-fit list, so it's used as a reference rather than prospected.

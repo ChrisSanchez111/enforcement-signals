@@ -69,6 +69,7 @@ function render(){
   <div class="tags">${a.themes.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}${a.solutions.slice(0,4).map(s=>`<span class="tag t">${esc(s)}</span>`).join("")}</div>
   ${a.summary?`<p class="sum">${esc(a.summary)}</p>`:""}
   ${a.opener?`<div class="op">${esc(a.opener)}</div>`:""}
+  ${a.alt_opener?`<div class="op" style="border-color:var(--teal);margin-top:6px">${esc(a.alt_opener)}</div>`:""}
  </div></article>`).join(""):'<p class="meta">Nothing in this view yet.</p>';
 }
 fetch("data.json").then(r=>r.json()).then(d=>{
