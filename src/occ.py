@@ -11,6 +11,7 @@ Each bank bullet reads roughly:
 """
 from __future__ import annotations
 
+import html as html_lib
 import re
 from datetime import datetime
 from urllib.parse import urljoin
@@ -36,8 +37,7 @@ def html_lines(html: str) -> list[str]:
     html = re.sub(r"\s+", " ", html)   # source line breaks are not content breaks
     html = re.sub(r"(?i)</(li|p|h\d|div|tr)>|<br\s*/?>", "\n", html)
     text = re.sub(r"<[^>]+>", " ", html)
-    text = (text.replace("&nbsp;", " ").replace("&amp;", "&").replace("&#8217;", "'")
-            .replace("&rsquo;", "'").replace("&ldquo;", '"').replace("&rdquo;", '"'))
+    text = html_lib.unescape(text).replace("\u00a0", " ")
     return [re.sub(r"\s+", " ", l).strip() for l in text.split("\n") if l.strip()]
 
 
@@ -59,7 +59,10 @@ def parse_release(html: str, url: str) -> list[dict]:
 
 
 def parse_lines(lines: list[str], url: str) -> list[dict]:
-    head = " ".join(lines[:15])
+    # The page's menus come first; the date sits on the "News Release YYYY-N | Month D, YYYY" line.
+    body_start = next((i for i, l in enumerate(lines) if re.match(r"News Release \d{4}-\d+", l)), 0)
+    lines = [html_lib.unescape(l) for l in lines[body_start:]]
+    head = " ".join(lines[:5])
     m = RELEASE_DATE.search(head) or ANY_DATE.search(head)
     released = ""
     if m:
@@ -69,6 +72,7 @@ def parse_lines(lines: list[str], url: str) -> list[dict]:
             released = ""
     actions, inside = [], False
     for line in lines:
+        line = re.sub(r"\s+,", ",", line)
         line = re.sub(r",?\s+(National Association|N\.A\.)(?=,)", " N.A.", line)
         if not inside:
             if BANK_SECTION_START.search(line):
