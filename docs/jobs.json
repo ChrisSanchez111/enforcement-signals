@@ -1,6 +1,571 @@
 {
-  "generated": null,
-  "note": "Not run yet. The Monday Action fills this in.",
-  "companies": [],
-  "no_board_found": []
+  "generated": "2026-11-23",
+  "note": "Public job-board APIs (Greenhouse, Lever, Ashby). Boards are matched by name, so check the company before acting. Companies on other systems (Workday, iCIMS, own sites) aren't covered.",
+  "companies": [
+    {
+      "company": "Crypto.com",
+      "ats": "lever",
+      "board": "https://api.lever.co/v0/postings/crypto",
+      "open_roles": 91,
+      "fincrime_roles": 8,
+      "remediation_roles": 5,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Senior Manager, Global Compliance Strategy and Policies (US)",
+          "url": "https://jobs.lever.co/crypto/05fd876e-17f0-40f5-b338-2e73e039b41e",
+          "location": "New York",
+          "signals": [
+            "remediation",
+            "enforcement action",
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Consumer Compliance Manager - UDAAP and Reg E focused",
+          "url": "https://jobs.lever.co/crypto/80c45ae6-12a4-4761-a298-f8bfa14fc679",
+          "location": "Chicago,IL",
+          "signals": [
+            "remediation",
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Senior Manager, Global Compliance Strategy and Policies (UK)",
+          "url": "https://jobs.lever.co/crypto/306d5afc-5dfc-47bb-8f53-f0817e32bb44",
+          "location": "London",
+          "signals": [
+            "remediation",
+            "enforcement action"
+          ]
+        },
+        {
+          "title": "VP, Compliance (Global Financial Intelligence Unit)",
+          "url": "https://jobs.lever.co/crypto/b4dc8249-5e6d-4c64-a4e8-cce3dd2be239",
+          "location": "Chicago,IL",
+          "signals": [
+            "remediation",
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Senior Financial Crime Manager, UK",
+          "url": "https://jobs.lever.co/crypto/fefd423f-f72e-47ff-907e-a28228e3f38e",
+          "location": "London",
+          "signals": [
+            "remediation"
+          ]
+        },
+        {
+          "title": "Financial Crimes Analyst, Bulgaria",
+          "url": "https://jobs.lever.co/crypto/19a72e17-85fc-44fa-b775-94372262af94",
+          "location": "Sofia",
+          "signals": []
+        },
+        {
+          "title": "Financial Crimes Analyst, Malta",
+          "url": "https://jobs.lever.co/crypto/8d9fe58f-152a-438a-b238-78b032888f79",
+          "location": "Saint Julian's, Malta",
+          "signals": []
+        },
+        {
+          "title": "VP, Global Compliance Strategy and Policies",
+          "url": "https://jobs.lever.co/crypto/cda4a1a9-bdf7-4fdb-aab1-24660be66edd",
+          "location": "London",
+          "signals": []
+        }
+      ],
+      "source": "tracker",
+      "via": "Community Federal Savings Bank (Woodhaven, NY)"
+    },
+    {
+      "company": "Affirm",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/affirm/jobs",
+      "open_roles": 218,
+      "fincrime_roles": 11,
+      "remediation_roles": 3,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Compliance Manager, Card",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/7979497003",
+          "location": "Remote Canada",
+          "signals": [
+            "remediation",
+            "regulatory findings",
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Compliance Manager, Card",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/7979495003",
+          "location": "Remote US",
+          "signals": [
+            "remediation",
+            "regulatory findings",
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Compliance Lead, Testing ",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/7994549003",
+          "location": "Remote US",
+          "signals": [
+            "remediation",
+            "regulatory findings"
+          ]
+        },
+        {
+          "title": "Manager, Fraud Operations",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/7821076003",
+          "location": "Remote US",
+          "signals": []
+        },
+        {
+          "title": "Manager, Fraud Operations",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/7821078003",
+          "location": "Remote Canada",
+          "signals": []
+        },
+        {
+          "title": "Senior Machine Learning Engineer (Fraud)",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/7806920003",
+          "location": "Remote Canada",
+          "signals": []
+        },
+        {
+          "title": "Senior Software Engineer, Back-end (Fraud)",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/8201459003",
+          "location": "Remote Poland",
+          "signals": []
+        },
+        {
+          "title": "Senior Software Engineer, Back-end, (Fraud)",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/8213907003",
+          "location": "Remote Spain",
+          "signals": []
+        },
+        {
+          "title": "Senior Software Engineer, Backend (Trust & Safety)",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/8197336003",
+          "location": "Remote Canada",
+          "signals": []
+        },
+        {
+          "title": "Senior Software Engineer, Backend (Trust & Safety)",
+          "url": "https://job-boards.greenhouse.io/affirm/jobs/8197334003",
+          "location": "Remote US",
+          "signals": []
+        }
+      ],
+      "source": "tracker",
+      "via": "Evolve Bank & Trust (West Memphis, AR)"
+    },
+    {
+      "company": "Polymarket",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/polymarket",
+      "open_roles": 33,
+      "fincrime_roles": 5,
+      "remediation_roles": 2,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Head of Fraud",
+          "url": "https://jobs.ashbyhq.com/polymarket/b7c17b49-aef7-4d30-a441-ddd143a88f35",
+          "location": "New York",
+          "signals": [
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Sanctions Compliance Officer ",
+          "url": "https://jobs.ashbyhq.com/polymarket/a72b3123-7a08-4cc4-a00b-18c61a42d5c1",
+          "location": "New York",
+          "signals": [
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Senior AML Investigator ",
+          "url": "https://jobs.ashbyhq.com/polymarket/c6c2f6d4-0d22-454a-89e1-df4b399bc4fd",
+          "location": "New York",
+          "signals": []
+        },
+        {
+          "title": "Senior Engineering Manager, Trust & Safety, Surveillance & Compliance",
+          "url": "https://jobs.ashbyhq.com/polymarket/888cc86a-755a-4f0c-9578-4a432e007d5c",
+          "location": "New York",
+          "signals": []
+        },
+        {
+          "title": "Trust and Safety Program Manager",
+          "url": "https://jobs.ashbyhq.com/polymarket/218587df-4c7d-437f-bcbc-ab7755629207",
+          "location": "New York",
+          "signals": []
+        }
+      ],
+      "source": "watch"
+    },
+    {
+      "company": "Mercury",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/mercury/jobs",
+      "open_roles": 69,
+      "fincrime_roles": 5,
+      "remediation_roles": 2,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Senior Risk Investigator - Fraud Incident Management & Partner Response",
+          "url": "https://job-boards.greenhouse.io/mercury/jobs/6251682004",
+          "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within United States",
+          "signals": [
+            "remediation",
+            "sponsor/partner bank",
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Senior Manager - Compliance Governance",
+          "url": "https://job-boards.greenhouse.io/mercury/jobs/6218803004",
+          "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within United States",
+          "signals": [
+            "remediation",
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Senior Product Manager - Fraud",
+          "url": "https://job-boards.greenhouse.io/mercury/jobs/6236462004",
+          "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within Canada or United States",
+          "signals": []
+        },
+        {
+          "title": "Senior Recruiter - Compliance",
+          "url": "https://job-boards.greenhouse.io/mercury/jobs/6238063004",
+          "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within Canada or United States",
+          "signals": []
+        },
+        {
+          "title": "Third Party Risk Manager",
+          "url": "https://job-boards.greenhouse.io/mercury/jobs/6251680004",
+          "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within Canada or United States",
+          "signals": []
+        }
+      ],
+      "source": "watch"
+    },
+    {
+      "company": "Piermont Bank",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/piermontbank/jobs",
+      "open_roles": 16,
+      "fincrime_roles": 2,
+      "remediation_roles": 2,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Senior BSA Manager ",
+          "url": "https://job-boards.greenhouse.io/piermontbank/jobs/4903428007",
+          "location": "New York, NY",
+          "signals": [
+            "remediation",
+            "regulatory findings",
+            "regulator-facing"
+          ]
+        },
+        {
+          "title": "Compliance Senior Associate ",
+          "url": "https://job-boards.greenhouse.io/piermontbank/jobs/5282068007",
+          "location": "New York, NY",
+          "signals": [
+            "remediation",
+            "regulator-facing"
+          ]
+        }
+      ],
+      "source": "tracker"
+    },
+    {
+      "company": "Column",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/column",
+      "open_roles": 24,
+      "fincrime_roles": 2,
+      "remediation_roles": 2,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Compliance Analyst",
+          "url": "https://jobs.ashbyhq.com/column/fea359b9-5ac3-4812-a1f8-88fd6031cb89",
+          "location": "Remote, USA",
+          "signals": [
+            "sponsor/partner bank"
+          ]
+        },
+        {
+          "title": "Correspondent Banking Compliance (language requirement)",
+          "url": "https://jobs.ashbyhq.com/column/494aacf9-0fe5-45ec-ad21-87bfe82bd35f",
+          "location": "Remote, USA",
+          "signals": [
+            "sponsor/partner bank"
+          ]
+        }
+      ],
+      "source": "watch"
+    },
+    {
+      "company": "Plaid",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/plaid",
+      "open_roles": 145,
+      "fincrime_roles": 12,
+      "remediation_roles": 1,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Security Compliance Lead",
+          "url": "https://jobs.ashbyhq.com/plaid/4a4fd836-ac5c-4570-8cb2-b50c2e55ede4",
+          "location": "Remote United States",
+          "signals": [
+            "remediation"
+          ]
+        },
+        {
+          "title": "Account Executive - Fraud",
+          "url": "https://jobs.ashbyhq.com/plaid/3a0611c3-7b8e-4962-bb48-dcd7ba04f352",
+          "location": "San Francisco HQ",
+          "signals": []
+        },
+        {
+          "title": "Account Executive - Fraud",
+          "url": "https://jobs.ashbyhq.com/plaid/d2f89c8e-551d-402b-9e81-c42577292d63",
+          "location": "Raleigh Office",
+          "signals": []
+        },
+        {
+          "title": "Data Science Manager - Fraud",
+          "url": "https://jobs.ashbyhq.com/plaid/55eacfa6-71e0-42ac-8788-04dc1e5fd694",
+          "location": "New York City Office",
+          "signals": []
+        },
+        {
+          "title": "Fraud Intelligence Analyst",
+          "url": "https://jobs.ashbyhq.com/plaid/2602117d-bfcc-407a-ae28-ea3a7c7aa216",
+          "location": "New York City Office",
+          "signals": []
+        },
+        {
+          "title": "Fraud Product Marketing Lead",
+          "url": "https://jobs.ashbyhq.com/plaid/4ade9d79-433a-4098-ab23-88ace9dfb668",
+          "location": "San Francisco HQ",
+          "signals": []
+        },
+        {
+          "title": "Fraud Strategist",
+          "url": "https://jobs.ashbyhq.com/plaid/6dbf0f7f-ef35-4037-9418-6b2460f41345",
+          "location": "San Francisco HQ",
+          "signals": []
+        },
+        {
+          "title": "GTM Compliance Analyst",
+          "url": "https://jobs.ashbyhq.com/plaid/d2c9d8b1-0428-4fdf-8b00-fd3ea28271b3",
+          "location": "New York City Office",
+          "signals": []
+        },
+        {
+          "title": "Senior Machine Learning Engineer - Fraud",
+          "url": "https://jobs.ashbyhq.com/plaid/e9a9aeab-be90-43f3-b898-63a846cb5777",
+          "location": "New York City Office",
+          "signals": []
+        },
+        {
+          "title": "Staff Data Scientist - Fraud",
+          "url": "https://jobs.ashbyhq.com/plaid/361c4725-ab72-4895-a3aa-9b642f4927a9",
+          "location": "New York City Office",
+          "signals": []
+        }
+      ],
+      "source": "watch"
+    },
+    {
+      "company": "Branch",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/branch/jobs",
+      "open_roles": 8,
+      "fincrime_roles": 1,
+      "remediation_roles": 1,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Compliance Analyst",
+          "url": "https://job-boards.greenhouse.io/branch/jobs/8207561003",
+          "location": "Remote, US",
+          "signals": [
+            "sponsor/partner bank"
+          ]
+        }
+      ],
+      "source": "tracker",
+      "via": "Evolve Bank & Trust (West Memphis, AR)"
+    },
+    {
+      "company": "Step",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/step/jobs",
+      "open_roles": 14,
+      "fincrime_roles": 1,
+      "remediation_roles": 1,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Head of Compliance",
+          "url": "https://step.com/careers/6174393004?gh_jid=6174393004",
+          "location": "Remote",
+          "signals": [
+            "sponsor/partner bank",
+            "regulator-facing"
+          ]
+        }
+      ],
+      "source": "tracker",
+      "via": "Evolve Bank & Trust (West Memphis, AR)"
+    },
+    {
+      "company": "Lead Bank",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/leadbank",
+      "open_roles": 14,
+      "fincrime_roles": 1,
+      "remediation_roles": 1,
+      "level": "remediation",
+      "jobs": [
+        {
+          "title": "Financial Crimes Quality Control Analyst II",
+          "url": "https://jobs.ashbyhq.com/leadbank/7e49dc41-4211-42ce-a660-e60f7ca8813c",
+          "location": "Kansas City, MO (Hybrid)",
+          "signals": [
+            "sponsor/partner bank"
+          ]
+        }
+      ],
+      "source": "watch"
+    },
+    {
+      "company": "Earnin",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/earnin/jobs",
+      "open_roles": 26,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "tracker",
+      "via": "Evolve Bank & Trust (West Memphis, AR)"
+    },
+    {
+      "company": "Wise",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/wise/jobs",
+      "open_roles": 18,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "tracker",
+      "via": "Community Federal Savings Bank (Woodhaven, NY)"
+    },
+    {
+      "company": "Evolve Bank & Trust",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/evolve",
+      "open_roles": 4,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "tracker"
+    },
+    {
+      "company": "Circle",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/circle",
+      "open_roles": 5,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "tracker",
+      "via": "United Texas Bank, N.A. (Dallas, TX)"
+    },
+    {
+      "company": "Stellar Development Foundation",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/stellar",
+      "open_roles": 20,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "tracker",
+      "via": "United Texas Bank, N.A. (Dallas, TX)"
+    },
+    {
+      "company": "Ramp",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/ramp/jobs",
+      "open_roles": 1,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "watch"
+    },
+    {
+      "company": "Unit",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/unit",
+      "open_roles": 1,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "watch"
+    },
+    {
+      "company": "Synctera",
+      "ats": "ashby",
+      "board": "https://api.ashbyhq.com/posting-api/job-board/synctera",
+      "open_roles": 1,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "watch"
+    },
+    {
+      "company": "Treasury Prime",
+      "ats": "greenhouse",
+      "board": "https://boards-api.greenhouse.io/v1/boards/treasuryprime/jobs",
+      "open_roles": 3,
+      "fincrime_roles": 0,
+      "remediation_roles": 0,
+      "level": "none",
+      "jobs": [],
+      "source": "watch"
+    }
+  ],
+  "no_board_found": [
+    "Cash App",
+    "Community Federal Savings Bank",
+    "Cross River",
+    "Kraken",
+    "Marqeta",
+    "Melio",
+    "Sutton Bank",
+    "Thredd",
+    "United Texas Bank"
+  ]
 }

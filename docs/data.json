@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20",
+  "generated": "2026-11-23",
   "month": "2026-11",
   "sources": {
     "Federal Reserve CSV": "ok (https://www.federalreserve.gov/supervisionreg/files/enforcementactions.csv), 334 open institution actions",
@@ -15,7 +15,7 @@
       "action": "Cease and desist order",
       "date": "2026-06-12",
       "segment": "Sponsor bank",
-      "summary": "BSA/AML compliance program deficiencies; order entered as a condition of converting to a national charter, carrying forward the corrective actions from a 2024 Federal Reserve order. A crypto-focused bank that reports more than $120B a year in crypto transaction volume. Released July 16, 2026.",
+      "summary": "BSA/AML compliance program deficiencies; order entered as a condition of converting to a national charter, carrying forward the corrective actions from a 2024 Federal Reserve order. A crypto-focused bank that reports more than $120B a year in crypto transaction volume. Released July 16, 2026. Hiring signal (checked by hand Nov 20, 2026): two financial-crime hires since Aug 2025, an AML/BSA compliance analyst and a senior OFAC and fraud controls role; no compliance roles open on its careers page now.",
       "themes": [
         "BSA/AML",
         "Third-party / fintech"
@@ -35,6 +35,7 @@
           "source": "https://www.theblock.co/post/314770/united-texas-bank-faces-cease-and-desist-order-from-federal-reserve-crypto-customers-and-risk-management"
         }
       ],
+      "hiring_checked": "2026-11-20",
       "source": "Curated",
       "customer": false,
       "icp": true,
@@ -131,39 +132,6 @@
       "url": "https://americanbanker.com/payments/news/affirm-adds-stride-bank-as-baas-provider-for-card-issuance",
       "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Affirm getting more compliance questions from Evolve Bank & Trust yet?",
       "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Affirm keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
-      "active_order": true,
-      "verify": false,
-      "source": "Partner of curated action",
-      "customer": false,
-      "icp": true,
-      "solutions": [
-        "Transaction Monitoring",
-        "Global KYB",
-        "Device & Behavior",
-        "Payment Fraud",
-        "Global KYC"
-      ],
-      "score": 80,
-      "first_seen": "2026-11-20",
-      "new": true
-    },
-    {
-      "institution": "Airwallex",
-      "regulator": "Federal Reserve",
-      "action": "Partner of Evolve Bank & Trust (West Memphis, AR) (Cease and desist order)",
-      "date": "2024-06-14",
-      "summary": "Runs on Evolve Bank & Trust (West Memphis, AR), which is under this order. Listed on Evolve's partner page.",
-      "themes": [
-        "BSA/AML",
-        "Sanctions",
-        "Third-party / fintech"
-      ],
-      "segment": "Fintech / payments",
-      "tier": "Partner of a bank under order",
-      "via": "Evolve Bank & Trust (West Memphis, AR)",
-      "url": "https://www.getevolved.com/?p=79",
-      "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Airwallex getting more compliance questions from Evolve Bank & Trust yet?",
-      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Airwallex keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
       "active_order": true,
       "verify": false,
       "source": "Partner of curated action",
@@ -869,6 +837,39 @@
       "opener": "",
       "tier": "Remediating",
       "score": 5,
+      "first_seen": "2026-11-20",
+      "new": true
+    },
+    {
+      "institution": "Airwallex",
+      "regulator": "Federal Reserve",
+      "action": "Partner of Evolve Bank & Trust (West Memphis, AR) (Cease and desist order)",
+      "date": "2024-06-14",
+      "summary": "Runs on Evolve Bank & Trust (West Memphis, AR), which is under this order. Listed on Evolve's partner page.",
+      "themes": [
+        "BSA/AML",
+        "Sanctions",
+        "Third-party / fintech"
+      ],
+      "segment": "Fintech / payments",
+      "tier": "Existing Sardine customer: use as a reference, don't prospect",
+      "via": "Evolve Bank & Trust (West Memphis, AR)",
+      "url": "https://www.getevolved.com/?p=79",
+      "opener": "Evolve Bank & Trust is under a Federal Reserve cease and desist order. Sponsor banks under orders push their partners for stronger monitoring and KYC evidence. Is Airwallex getting more compliance questions from Evolve Bank & Trust yet?",
+      "alt_opener": "When a sponsor bank tightens up, fintechs often answer by declining more good customers at onboarding. How is Airwallex keeping approval rates up while Evolve Bank & Trust asks for more evidence?",
+      "active_order": true,
+      "verify": false,
+      "source": "Partner of curated action",
+      "customer": true,
+      "icp": false,
+      "solutions": [
+        "Transaction Monitoring",
+        "Global KYB",
+        "Device & Behavior",
+        "Payment Fraud",
+        "Global KYC"
+      ],
+      "score": 0,
       "first_seen": "2026-11-20",
       "new": true
     }

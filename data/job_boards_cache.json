@@ -1,1 +1,142 @@
-{}
+{
+  "affirm": {
+    "ats": "greenhouse",
+    "slug": "affirm",
+    "checked": "2026-11-23"
+  },
+  "branch": {
+    "ats": "greenhouse",
+    "slug": "branch",
+    "checked": "2026-11-23"
+  },
+  "cash app": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "circle": {
+    "ats": "ashby",
+    "slug": "circle",
+    "checked": "2026-11-23"
+  },
+  "column": {
+    "ats": "ashby",
+    "slug": "column",
+    "checked": "2026-11-23"
+  },
+  "community federal savings bank": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "cross river": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "crypto.com": {
+    "ats": "lever",
+    "slug": "crypto",
+    "checked": "2026-11-23"
+  },
+  "earnin": {
+    "ats": "greenhouse",
+    "slug": "earnin",
+    "checked": "2026-11-23"
+  },
+  "evolve bank & trust": {
+    "ats": "ashby",
+    "slug": "evolve",
+    "checked": "2026-11-23"
+  },
+  "kraken": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "lead bank": {
+    "ats": "ashby",
+    "slug": "leadbank",
+    "checked": "2026-11-23"
+  },
+  "marqeta": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "melio": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "mercury": {
+    "ats": "greenhouse",
+    "slug": "mercury",
+    "checked": "2026-11-23"
+  },
+  "piermont bank": {
+    "ats": "greenhouse",
+    "slug": "piermontbank",
+    "checked": "2026-11-23"
+  },
+  "plaid": {
+    "ats": "ashby",
+    "slug": "plaid",
+    "checked": "2026-11-23"
+  },
+  "polymarket": {
+    "ats": "ashby",
+    "slug": "polymarket",
+    "checked": "2026-11-23"
+  },
+  "ramp": {
+    "ats": "greenhouse",
+    "slug": "ramp",
+    "checked": "2026-11-23"
+  },
+  "stellar development foundation": {
+    "ats": "ashby",
+    "slug": "stellar",
+    "checked": "2026-11-23"
+  },
+  "step": {
+    "ats": "greenhouse",
+    "slug": "step",
+    "checked": "2026-11-23"
+  },
+  "sutton bank": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "synctera": {
+    "ats": "ashby",
+    "slug": "synctera",
+    "checked": "2026-11-23"
+  },
+  "thredd": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "treasury prime": {
+    "ats": "greenhouse",
+    "slug": "treasuryprime",
+    "checked": "2026-11-23"
+  },
+  "unit": {
+    "ats": "ashby",
+    "slug": "unit",
+    "checked": "2026-11-23"
+  },
+  "united texas bank": {
+    "ats": null,
+    "slug": null,
+    "checked": "2026-11-23"
+  },
+  "wise": {
+    "ats": "greenhouse",
+    "slug": "wise",
+    "checked": "2026-11-23"
+  }
+}
