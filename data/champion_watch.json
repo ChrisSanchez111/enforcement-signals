@@ -15,9 +15,9 @@
     [
       "liveoak.bank",
       "coastalbank.com",
-      "threadbank.com",
+      "thread.bank",
       "stearnsbank.com",
-      "vaultbank.com",
+      "vault.bank",
       "custodiabank.com",
       "renasantbank.com",
       "nbc.ca",
@@ -59,6 +59,37 @@
       "swan.io",
       "brightwell.com",
       "experian.com"
+    ],
+    [
+      "banksouthern.com",
+      "bcb.bm",
+      "fblake.bank",
+      "ffbkc.com",
+      "haventreebank.com",
+      "lhv.ee",
+      "prezzee.com",
+      "edwardjones.com",
+      "zoominfo.com",
+      "clear.bank"
+    ],
+    [
+      "always.bank",
+      "aspireapp.com",
+      "tryjeeves.com",
+      "inspirafinancial.com",
+      "ascensus.com",
+      "atlascard.com",
+      "slopepay.com",
+      "paynuity.com",
+      "rain.xyz",
+      "linkerfinance.com"
+    ],
+    [
+      "thoughtmachine.net",
+      "whop.com",
+      "hotelplanner.com",
+      "finwise.bank",
+      "bangor.com"
     ]
   ],
   "scoring": {
@@ -66,5 +97,6 @@
     "new_employer_is_customer": "drop (already a customer)",
     "enforcement_lookup": "for each new employer, check the tracker, the Fed and OCC feeds, and a targeted web search (FDIC, FinCEN, state regulators, CFPB, CFTC/SEC for non-banks); an open action or a sponsor bank under order moves the lead to the top",
     "segment_fit": "use the tracker's segment weights to order the rest"
-  }
+  },
+  "coverage_note": "65 domains: every name in known_customers.json except Heritage Bank and Portage Bank, where several banks share the name and the right one can't be confirmed."
 }

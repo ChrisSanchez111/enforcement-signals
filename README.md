@@ -46,12 +46,22 @@ Two adjustments: partner links reported only in older or third-party sources los
 - **The OCC is a trickle.** Many months have no bank actions at all, and most actions are capital or management problems at community banks.
 - **Federal Reserve tagging is keyword-based.** It reads the order text and needs two keyword hits per theme, so it can mis-tag an order. Some Fed orders can't be read and stay "Unclassified."
 - **Scores are judgment calls, not a trained model.** The weights encode one view of who buys and when. They're easy to change, and worth arguing about.
-- **Hiring signals are checked by hand.** Recent compliance hires and open AML roles (a sign of alert backlog or a team being built) are looked up on careers pages and LinkedIn and noted in the summary. No names are stored. Automating this is next.
+- **Hiring signals cover public ATS boards only.** Greenhouse, Lever and Ashby are automated (see Remediation hiring); banks on Workday or their own sites still need a manual check. No names are stored.
 - **Name matching is simple.** Duplicate detection and the customer flag match on normalized names, so similarly named institutions can collide.
+
+## Remediation hiring
+
+A third signal: companies hiring to fix a compliance problem. `src/jobs.py` runs in the Monday Action and reads the public Greenhouse, Lever and Ashby job-board APIs for every best-fit target in the tracker, plus the companies in `data/job_watch.json` (existing customers are skipped). A role counts if its title is a financial-crime role (BSA/AML, KYC/KYB, fraud, sanctions, transaction monitoring, compliance). Each company is then labeled:
+
+- **Remediation:** a posting mentions a consent order, remediation, a lookback, MRAs, regulatory or exam findings, an enforcement action, or sponsor/partner bank oversight.
+- **Build-out:** three or more financial-crime roles open at once.
+- **Hiring / none:** fewer roles and no remediation language.
+
+Results go to `docs/jobs.json`. The ATS board each company uses is found by trying name-based slugs and cached in `data/job_boards_cache.json`. **Limits:** boards are matched by name, so a wrong match is possible; companies on Workday, iCIMS or their own career sites aren't covered and are listed under `no_board_found`.
 
 ## Champion moves
 
-A second signal: risk, fraud and compliance leaders who leave a publicly named Sardine customer for a new role. In their first months, new leaders often revisit vendors and bring in tools they know. `data/champion_watch.json` holds the customer domains (searched in batches of 10), titles and a 6-month lookback. Searches run in Clay. Every move stays on the list; enforcement is a bonus, not a filter. A new employer that's already a customer is dropped. Each remaining employer gets its own enforcement lookup (this tracker, the Fed and OCC feeds, and a targeted search for FDIC, FinCEN, state and market regulators), and any open action, including one against its sponsor bank, moves the lead to the top. Results are reviewed privately: **no names are stored in this repo.**
+A second signal: risk, fraud and compliance leaders who leave a publicly named Sardine customer for a new role. In their first months, new leaders often revisit vendors and bring in tools they know. `data/champion_watch.json` holds 65 customer domains (every publicly named customer whose domain could be confirmed, searched in batches of 10), titles and a 6-month lookback. Searches run in Clay. Every move stays on the list; enforcement is a bonus, not a filter. A new employer that's already a customer is dropped. Each remaining employer gets its own enforcement lookup (this tracker, the Fed and OCC feeds, and a targeted search for FDIC, FinCEN, state and market regulators), and any open action, including one against its sponsor bank, moves the lead to the top. Results are reviewed privately: **no names are stored in this repo.**
 
 ## Existing customers
 

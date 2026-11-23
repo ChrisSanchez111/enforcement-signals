@@ -23,11 +23,13 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Collect enforcement actions
         run: python src/collect.py
+      - name: Scan job boards for remediation hiring
+        run: python src/jobs.py || echo "Job scan failed; continuing."
       - name: Commit results
         run: |
           git config user.name "enforcement-signals bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/data.json targets/ data/fed_cache.json data/occ_cache.json
+          git add docs/data.json docs/jobs.json targets/ data/fed_cache.json data/occ_cache.json data/job_boards_cache.json
           if git diff --cached --quiet; then
             echo "No changes this run."
           else

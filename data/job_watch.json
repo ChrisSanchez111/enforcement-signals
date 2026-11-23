@@ -1,0 +1,45 @@
+{
+  "note": "Extra companies to scan for remediation hiring, beyond the tracker's best-fit targets. Optional 'board' pins the ATS and slug when the name guess fails.",
+  "companies": [
+    {
+      "name": "Polymarket",
+      "board": {
+        "ats": "ashby",
+        "slug": "polymarket"
+      }
+    },
+    {
+      "name": "Kraken"
+    },
+    {
+      "name": "Mercury"
+    },
+    {
+      "name": "Ramp"
+    },
+    {
+      "name": "Plaid"
+    },
+    {
+      "name": "Marqeta"
+    },
+    {
+      "name": "Unit"
+    },
+    {
+      "name": "Synctera"
+    },
+    {
+      "name": "Treasury Prime"
+    },
+    {
+      "name": "Column"
+    },
+    {
+      "name": "Lead Bank"
+    },
+    {
+      "name": "Cross River"
+    }
+  ]
+}
