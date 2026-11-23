@@ -62,8 +62,9 @@
     ]
   ],
   "scoring": {
+    "rule": "Every champion move stays on the list. Enforcement is a bonus flag, never a filter.",
     "new_employer_is_customer": "drop (already a customer)",
-    "new_employer_in_enforcement_tracker": "flag as top match",
-    "segment_fit": "use the tracker's segment weights"
+    "enforcement_lookup": "for each new employer, check the tracker, the Fed and OCC feeds, and a targeted web search (FDIC, FinCEN, state regulators, CFPB, CFTC/SEC for non-banks); an open action or a sponsor bank under order moves the lead to the top",
+    "segment_fit": "use the tracker's segment weights to order the rest"
   }
 }

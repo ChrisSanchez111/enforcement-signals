@@ -51,7 +51,7 @@ Two adjustments: partner links reported only in older or third-party sources los
 
 ## Champion moves
 
-A second signal: risk, fraud and compliance leaders who leave a publicly named Sardine customer for a new role. In their first months, new leaders often revisit vendors and bring in tools they know. `data/champion_watch.json` holds the customer domains (searched in batches of 10), titles and a 6-month lookback. Searches run in Clay. A new employer that's already a customer is dropped, and one that also appears in this tracker is flagged as a top match. Results are reviewed privately: **no names are stored in this repo.**
+A second signal: risk, fraud and compliance leaders who leave a publicly named Sardine customer for a new role. In their first months, new leaders often revisit vendors and bring in tools they know. `data/champion_watch.json` holds the customer domains (searched in batches of 10), titles and a 6-month lookback. Searches run in Clay. Every move stays on the list; enforcement is a bonus, not a filter. A new employer that's already a customer is dropped. Each remaining employer gets its own enforcement lookup (this tracker, the Fed and OCC feeds, and a targeted search for FDIC, FinCEN, state and market regulators), and any open action, including one against its sponsor bank, moves the lead to the top. Results are reviewed privately: **no names are stored in this repo.**
 
 ## Existing customers
 
