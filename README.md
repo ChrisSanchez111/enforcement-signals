@@ -49,6 +49,10 @@ Two adjustments: partner links reported only in older or third-party sources los
 - **Hiring signals are checked by hand.** Recent compliance hires and open AML roles (a sign of alert backlog or a team being built) are looked up on careers pages and LinkedIn and noted in the summary. No names are stored. Automating this is next.
 - **Name matching is simple.** Duplicate detection and the customer flag match on normalized names, so similarly named institutions can collide.
 
+## Champion moves
+
+A second signal: risk, fraud and compliance leaders who leave a publicly named Sardine customer for a new role. In their first months, new leaders often revisit vendors and bring in tools they know. `data/champion_watch.json` holds the customer domains (searched in batches of 10), titles and a 6-month lookback. Searches run in Clay. A new employer that's already a customer is dropped, and one that also appears in this tracker is flagged as a top match. Results are reviewed privately: **no names are stored in this repo.**
+
 ## Existing customers
 
 `data/known_customers.json` lists companies publicly named as Sardine customers (from its customers page and job posting). Any target that matches is flagged as an existing customer, scored 0 and moved out of the best-fit list, so it's used as a reference rather than prospected.

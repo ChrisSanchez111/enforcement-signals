@@ -1,0 +1,69 @@
+{
+  "note": "Config for champion-move tracking: risk, fraud and compliance leaders who leave a publicly named Sardine customer for a new role. Searches run in Clay; results are reviewed privately and no names are stored in this repo.",
+  "lookback_months": 6,
+  "titles": [
+    "Chief Risk Officer",
+    "BSA Officer",
+    "Chief Compliance Officer",
+    "Head of Fraud",
+    "VP Fraud",
+    "Director of Fraud",
+    "AML Officer",
+    "Head of Financial Crimes"
+  ],
+  "customer_domains": [
+    [
+      "liveoak.bank",
+      "coastalbank.com",
+      "threadbank.com",
+      "stearnsbank.com",
+      "vaultbank.com",
+      "custodiabank.com",
+      "renasantbank.com",
+      "nbc.ca",
+      "sullivanbank.com",
+      "22ndstatebank.com"
+    ],
+    [
+      "sofi.com",
+      "chime.com",
+      "robinhood.com",
+      "coinbase.com",
+      "brex.com",
+      "nubank.com.br",
+      "airwallex.com",
+      "remitly.com",
+      "checkout.com",
+      "kalshi.com"
+    ],
+    [
+      "fisglobal.com",
+      "godaddy.com",
+      "intuit.com",
+      "novo.co",
+      "rho.co",
+      "moov.io",
+      "nium.com",
+      "truelayer.com",
+      "bunq.com",
+      "raise.com"
+    ],
+    [
+      "tala.co",
+      "altruist.com",
+      "kuda.com",
+      "zolve.com",
+      "parafin.com",
+      "atob.com",
+      "teya.com",
+      "swan.io",
+      "brightwell.com",
+      "experian.com"
+    ]
+  ],
+  "scoring": {
+    "new_employer_is_customer": "drop (already a customer)",
+    "new_employer_in_enforcement_tracker": "flag as top match",
+    "segment_fit": "use the tracker's segment weights"
+  }
+}
