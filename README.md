@@ -22,7 +22,7 @@ The strongest leads are where signals overlap: for example, a fintech whose spon
 
 | Time (ET) | What happens | Where |
 |---|---|---|
-| ~6:17 AM | Pull Fed and OCC enforcement actions, merge curated FDIC/FinCEN/state actions and sponsor-bank partners, classify and score them. Then scan job boards for remediation hiring. Commit the results. | GitHub Action (`.github/workflows/weekly.yml`) |
+| Sun ~7:41 PM (backup ~12:41 AM Mon) | Pull Fed and OCC enforcement actions, merge curated FDIC/FinCEN/state actions and sponsor-bank partners, classify and score them. Then scan job boards for remediation hiring. Commit the results. | GitHub Action (`.github/workflows/weekly.yml`) |
 | 7:52 AM | Read the fresh data, search Clay for champion moves, check each new employer for enforcement, scan the week's news, pick a product to study, and send **one** email. | Claude scheduled task |
 
 ### What the weekly email contains, in order
