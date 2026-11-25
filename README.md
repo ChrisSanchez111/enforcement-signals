@@ -4,6 +4,7 @@ A weekly prospecting engine for fraud and AML software. It watches four public s
 
 **Dashboard:** https://chrissanchez111.github.io/enforcement-signals/
 **Latest target list:** [`targets/`](targets/) (refreshed every Monday)
+**Research: Fraud migration, Dominican Republic case study:** [`research/dr-fraud-migration/`](research/dr-fraud-migration/) (how chip cards pushed fraud online and abroad: regulator loss data plus U.S. federal cases)
 
 ## At a glance
 

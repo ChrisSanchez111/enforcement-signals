@@ -1,0 +1,32 @@
+metric,year,value_dop_millions,share_pct,source_report,page,note
+gross_oprisk_losses,2023,2237,,SB riesgo operacional 2023,4;16,
+gross_oprisk_losses,2024,2725,,SB riesgo operacional 2024,13,2025 report restates as 2708
+gross_oprisk_losses,2025,2498,,SB riesgo operacional 2025,4;7;13,-7.8% YoY
+net_oprisk_losses,2023,1677,,SB riesgo operacional 2023,7,
+net_oprisk_losses,2024,1698,,SB riesgo operacional 2024,7,
+net_oprisk_losses,2025,1924,,SB riesgo operacional 2025,7,+14.5% YoY
+external_fraud_net,2023,1121,67,SB riesgo operacional 2023,4;8,+49% vs 2022
+external_fraud_net,2024,868,51,SB riesgo operacional 2024,4;8,-23% vs 2023
+external_fraud_net,2025,1254,65,SB riesgo operacional 2025,8,
+internal_fraud_net,2023,17,,SB riesgo operacional 2024,8,
+internal_fraud_net,2024,140,,SB riesgo operacional 2024,8,
+internal_fraud_net,2025,14,,SB riesgo operacional 2025,8,
+credit_card_product_losses,2019,203,,SB riesgo operacional 2023,10,POS was the most relevant card-fraud channel in 2019 (p12)
+credit_card_product_losses,2021,420,,SB riesgo operacional 2023,10,
+credit_card_product_losses,2023,534,,SB riesgo operacional 2023,10,
+credit_card_product_losses,2024,496,,SB riesgo operacional 2024,9,
+cc_fraud_ecommerce,2023,334,67,SB riesgo operacional 2023,12-13,report's 67% doesn't match 334/534
+cc_fraud_ecommerce,2024,355,75,SB riesgo operacional 2024,11,
+cc_fraud_ecommerce,2025,,,SB riesgo operacional 2025,11,still main channel; larger POS share; no pct given
+all_products_ecommerce_net,2023,505,,SB riesgo operacional 2023,11,e-commerce channel introduced in 2023 reporting manual
+all_products_ecommerce_net,2024,722,43,SB riesgo operacional 2024,4;10,
+all_products_ecommerce_net,2025,,40,SB riesgo operacional 2025,10;15,
+all_products_ebanking_net,2021,646,,SB riesgo operacional 2024,10,peak internet+e-banking
+all_products_ebanking_net,2023,566,,SB riesgo operacional 2023,4;11,
+all_products_ebanking_net,2024,232,14,SB riesgo operacional 2024,10,
+all_products_ebanking_net,2025,,13,SB riesgo operacional 2025,10;15,
+digital_channels_share_net,2025,,53,SB riesgo operacional 2025,15,e-commerce + e-banking
+savings_current_fraud_net,2023,562,,SB riesgo operacional 2023,14,
+savings_current_fraud_net,2024,359,,SB riesgo operacional 2024,12,
+branch_fraud_savings,2020,59,,SB riesgo operacional 2023,14,peak
+branch_fraud_savings,2023,20,,SB riesgo operacional 2023,14,
